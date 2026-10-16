@@ -1,0 +1,8 @@
+{
+  "section_name": "validation_rules",
+  "required_columns": ["rule_id", "target_table", "target_field", "rule_type", "severity", "sequence"],
+  "optional_columns": ["param_1", "param_2", "allowed_values", "compare_field", "compare_table", "compare_column", "precondition_field", "precondition_operator", "precondition_value", "description"],
+  "valid_rule_types": ["not_blank", "exact_length", "max_length", "allowed_values", "valid_date", "numeric", "date_greater_than", "date_lte", "numeric_min", "numeric_max", "cross_reference_exists", "conditional", "default_then_warn"],
+  "valid_severities": ["SEVERE", "WARNING"],
+  "valid_tables": ["CNT", "CVG", "ROL", "ADD"]
+}

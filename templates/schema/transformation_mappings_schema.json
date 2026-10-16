@@ -1,0 +1,7 @@
+{
+  "section_name": "transformation_mappings",
+  "required_columns": ["mapping_id", "source_table", "source_field", "target_field", "transformation_type", "target_length", "target_data_type", "sequence"],
+  "optional_columns": ["padding_rule", "default_value", "date_handling", "truncation_rule", "description"],
+  "valid_transformation_types": ["direct_copy", "date_split_year", "date_split_month", "date_split_day", "constant", "space_fill", "zero_fill", "conditional_derived", "system_generated"],
+  "valid_data_types": ["CHAR", "NUMERIC", "PACKED_DECIMAL", "BINARY_COMP", "GROUP"]
+}

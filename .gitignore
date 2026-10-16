@@ -1,0 +1,112 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+*.pyd
+.Python
+
+# Virtual environments
+venv/
+.venv/
+env/
+ENV/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Output folder (generated at runtime)
+output/
+**/output/
+
+# Sample data folder (generated at runtime)
+sample_data/
+**/sample_data/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Kiro IDE settings (local)
+.kiro/settings/
+
+# OS files
+.DS_Store
+Thumbs.db
+Desktop.ini
+ehthumbs.db
+
+# Excel and xlsm files (general - excluded by default)
+*.xlsx
+*.xlsm
+*.xls
+
+# EXCEPTION: rules/ folder — Nancy's source-of-truth Excel files (tracked for team reference)
+!rules/*.xlsx
+!rules/*.xlsm
+!rules/*.xls
+
+# PowerPoint files (generated, not source code)
+*.pptx
+*.ppt
+
+# Distribution and packaging
+dist/
+build/
+*.egg-info/
+*.egg
+
+# pytest / coverage
+.pytest_cache/
+htmlcov/
+.coverage
+.coverage.*
+coverage.xml
+*.cover
+
+# mypy
+.mypy_cache/
+
+# ruff
+.ruff_cache/
+
+# Debug/diagnostic output files (generated during development)
+*_output.txt
+*_results.txt
+*_err.txt
+*_out.txt
+*_stderr.txt
+*_stdout.txt
+pipeline_*.txt
+run*.txt
+step*.txt
+task*.txt
+test_result*.txt
+spark_*.txt
+xref_*.txt
+pipe_*.txt
+debug_*.txt
+diag_*.txt
+check_*.txt
+verify_*.txt
+pycheck.txt
+pytest.txt
+quick_test_*.txt
+hash_results.txt
+
+# Temp Spark files
+spark_tmp/
+
+# Test run output directories
+output_*/
+
+# Throwaway debug/test scripts (prevent accidental re-add)
+test_spark*.py
+run_pipe*.bat
+run_debug.bat
+run_diag.bat

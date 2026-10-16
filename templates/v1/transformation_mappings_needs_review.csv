@@ -1,0 +1,36 @@
+row_number,raw_col_a,raw_col_c,raw_col_i,reason
+2,Copybook: CIUATEA1,,"For this policy add TRAD transaction:
+- Use Staging Template tabs to get policy owner & their address, payor & their address, insured & their address.  
+- You are mapping fields from the Staging Templ",Could not extract target_field from Col A
+3,agent,Field Format,Policy Data Loader Mapping,Could not extract target_field from Col A
+72,COVERAGE INFORMATION SCREEN 1.,,,Could not extract target_field from Col A
+143,25  ADDRESS-AREA,OCCURS 4 TIMES.,,PIC clause not recognized - needs manual review: OCCURS 4 TIMES.
+152,0' '1' '2' '3' '4''5' '6' 'Y' 'N'.,,,Could not extract target_field from Col A
+154,'3' '4' '5' '6' 'Y',,,Could not extract target_field from Col A
+156,0' '1' '2' '4' '5''6' 'N'.,,,Could not extract target_field from Col A
+183,PLAN INFORMATION SCREEN 2.,,,Could not extract target_field from Col A
+251,SPACES WHEN PREMIUM NOT OVERRIDEN,,,Could not extract target_field from Col A
+311,BILLING INFORMATION SCREEN 3.,,,Could not extract target_field from Col A
+325,SPACES WHEN PREMIUM NOT OVERRIDEN,,,Could not extract target_field from Col A
+378,PRODUCER INFORMATION SCREEN 4.,,,Could not extract target_field from Col A
+394,REINSURANCE / NONSTANDARD INFORMATION SCREEN 5.,,,Could not extract target_field from Col A
+415,15  FLAT-EXTRA-INFO,OCCURS 6 TIMES.,,PIC clause not recognized - needs manual review: OCCURS 6 TIMES.
+423,"THE PURPOSE OF THIS NEW FIELD IS TO FORCE THE INFLATION OF   THE Z0214 OBJECT.  THIS FIELD WILL ALWAYS BE PASSED EITHER  AS A Y OR N, OTHERWISE IF NO FIELDS OBJECT WOULD NOT BE INFLATED AND THEREFORE ",,,Could not extract target_field from Col A
+429,"BENEFICIARY INFORMATION SCREEN 6. THIS INFO MOVED TO CIUATEAA, THE EA EXTRA TRX.",,,Could not extract target_field from Col A
+430,OWNER/PAYOR INFORMATION SCREEN 7.,,,Could not extract target_field from Col A
+447,20  ADDRESS-AREA,OCCURS 4 TIMES.,,PIC clause not recognized - needs manual review: OCCURS 4 TIMES.
+471,10  W8BEN-RCD-DATE-R REDEFINES         ,W8BEN-RCD-DATE. TRAD038 ,,PIC clause not recognized - needs manual review: W8BEN-RCD-DATE. TRAD038 
+476,10  W8BEN-NXT-MAIL-R REDEFINES,W8BEN-NXT-MAIL-DATE.  TRAD038 ,,PIC clause not recognized - needs manual review: W8BEN-NXT-MAIL-DATE.  TRAD038 
+481,10  W8BEN-PRV-MAIL-R REDEFINES,W8BEN-PRV-MAIL-DATE.     TRAD038 ,,PIC clause not recognized - needs manual review: W8BEN-PRV-MAIL-DATE.     TRAD038 
+505,20  ADDRESS-AREA,OCCURS 4 TIMES.,,PIC clause not recognized - needs manual review: OCCURS 4 TIMES.
+527,"ALTERNATE ADDRESSE INFORMATION SCREEN 8. THIS INFO MOVED TO CIUATEAA, THE EA EXTRA TRX.",,,Could not extract target_field from Col A
+535,REPLACEMENT INFORMATION SCREEN 9.,,,Could not extract target_field from Col A
+536,10  REPLACEMENT-DATA,OCCURS 2 TIMES.,,PIC clause not recognized - needs manual review: OCCURS 2 TIMES.
+551,10  COMMISSION-DATA,OCCURS 2 TIMES.,,PIC clause not recognized - needs manual review: OCCURS 2 TIMES.
+560,TERM PREFIX INFO FOR EAP SCREEN,,,Could not extract target_field from Col A
+580,10  COMMON-BANK-INFO.,COPY CIUAXBKI SUPPRESS.,,PIC clause not recognized - needs manual review: COPY CIUAXBKI SUPPRESS.
+582,-----------------------------------,------------------------,,Could not extract target_field from Col A
+583,INTERNALLY GENERATED DATA ITEMS BEGIN HERE,,,Could not extract target_field from Col A
+584,-----------------------------------,------------------------,,Could not extract target_field from Col A
+724,25  ADDRESS-AREA-X,REDEFINES CITY-STATE.,,PIC clause not recognized - needs manual review: REDEFINES CITY-STATE.
+725,30  ADDRESS-AREA ,OCCURS 4 TIMES.,,PIC clause not recognized - needs manual review: OCCURS 4 TIMES.

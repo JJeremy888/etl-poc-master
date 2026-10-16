@@ -1,0 +1,457 @@
+﻿"Field name
+Nancy Edits in red","Definition
+Nancy Edits in red",Copybook Field,Allowable Values,"Edits/Validation
+Nancy Edits in red","Allowable Values Description
+Nancy Edits in red",Nancy Comments Including Cross References,"Which LOB field is applicable for? (TRAD/UL/Annuity)
+Nancy Edits in Red",Value as of Conversion Start OR Conversion Cutoff date?,Data element significance for Refresh Project,Format/Size,Data Type,Length,Precision,Module Names,,
+,,,,,,"General Observation:  I think it would be helpful to have a contract field that designates if the product type is single premium, flex prem or fixed prem.  (The status, even if paid-up, doesn't tell us whether it's single premium.  The product type doesn't tell us flex vs fixed - e.g., some ULs can be fixed.)  I could do more cross edits among fields and tabs if I knew this but I believe it would have to be translated from the actual plan code setup.",,,,,,,,,,
+CNT_ISSUE_SYSTEM,Legacy system code used when converting from multiple legacy systems.,DTL-ISSUE-SYSTEM               ,,"Data Type: CHAR
+Length: Must be exactly 2 character
+Edit/Validation: Should not have spaces/blank",,,"TRAD ,UL and ANN",End,,PIC X(02).          ,CHAR,2,,"BALDELMY.CBL, CNVECS.CBL, CNVEEA.CBL, CNVEGA.CBL, CNVEGB.CBL, CNVEGD.CBL, CNVEGF.CBL, CNVEGG.CBL, CNVEGH.CBL, CNVEGI.CBL, CNVEGLI.CBL, CNVEGR.CBL, CNVEGZ.CBL, CNVELAD1.CBL, CNVELBD.CBL, CNVELRA.CBL, CNVELRI.CBL, CNVENA.CBL, CNVEPW.CBL, CNVETRX.CBL, CNVEUL.CBL, CNVFANN.CBL, CNVFEA.CBL, CNVFGF.CBL, CNVFLBD.CBL, CNVFLRI.CBL, CNVFLU.CBL, CNVFNA.CBL, CNVFTRX.CBL, CNVTCS.CBL, CNVTDA.CBL, CNVTEA.CBL, CNVTEAA.CBL, CNVTGH.CBL, CNVTGS.CBL, CNVTJLA.CBL, CNVTKE.CBL, CNVTLBD.CBL, CNVTLRI.CBL, CNVTPJ.CBL, CNVTRAD.CBL, CNVTTRX.CBL, CNVTTW.CBL, CNVX000.CBL, PAYDIRID.CBL",,
+CNT_COMPANY_CODE,,DTL-COMPANY-CODE               ,,"Data Type: CHAR
+Length: Must be exactly 3 character
+Edit/Validation: Should not have spaces/blank",,"CROSS REFERENCE
+
+Contract tab is always required.  
+
+CNT_COMPANY_CODE must not be empty/blank. 
+
+If conditions not satisfied, send severe messages.
+
+","TRAD ,UL and ANN",End,,PIC X(03).       ,CHAR,3,,"BALDELMY.CBL, CNVECS.CBL, CNVEEA.CBL, CNVEGA.CBL, CNVEGB.CBL, CNVEGF.CBL, CNVEGG.CBL, CNVEGH.CBL, CNVEGI.CBL, CNVEGLI.CBL, CNVEGR.CBL, CNVEGZ.CBL, CNVELAD1.CBL, CNVELBD.CBL, CNVELRA.CBL, CNVELRI.CBL, CNVENA.CBL, CNVEPW.CBL, CNVETRX.CBL, CNVEUL.CBL, CNVFANN.CBL, CNVFEA.CBL, CNVFGF.CBL, CNVFLBD.CBL, CNVFLRI.CBL, CNVFMA.CBL, CNVFNA.CBL, CNVFPA.CBL, CNVFTRX.CBL, CNVTCS.CBL, CNVTDA.CBL, CNVTEA.CBL, CNVTEAA.CBL, CNVTGH.CBL, CNVTGLI.CBL, CNVTGS.CBL, CNVTJLA.CBL, CNVTKE.CBL, CNVTLBD.CBL, CNVTLRI.CBL, CNVTLU.CBL, CNVTNA.CBL, CNVTPA.CBL, CNVTPA1.CBL, CNVTPJ.CBL, CNVTRAD.CBL, CNVTTC.CBL, CNVTTRX.CBL, CNVTTW.CBL, CNVX000.CBL, PLUGPFFT.SQB, PLUGTRDNFX.SQB",,
+CNT_POLICY_NUMBER,"The unique number, within a company, that identifies an insurance policy.",DTL-POLICY-NUMBER,,"Data Type: CHAR
+Length: 15 character
+Edit/Validation: Should not have spaces/blank",,"CROSS REFERENCE
+
+Send severe message if policy number not present.
+
+","TRAD ,UL and ANN",End,,PIC X(15).       ,CHAR,15,,"BALDELMY.CBL, CNVECS.CBL, CNVEEA.CBL, CNVEGA.CBL, CNVEGB.CBL, CNVEGD.CBL, CNVEGF.CBL, CNVEGG.CBL, CNVEGH.CBL, CNVEGI.CBL, CNVEGLI.CBL, CNVEGR.CBL, CNVEGZ.CBL, CNVELAC1.CBL, CNVELAD1.CBL, CNVELBD.CBL, CNVELID1.CBL, CNVELPI1.CBL, CNVELRA.CBL, CNVELRI.CBL, CNVELTR1.CBL, CNVELU.CBL, CNVENA.CBL, CNVEPW.CBL, CNVETRX.CBL, CNVEUL.CBL, CNVEVA.CBL, CNVFANN.CBL, CNVFEA.CBL, CNVFGF.CBL, CNVFLBD.CBL, CNVFLRI.CBL, CNVFNA.CBL, CNVFPA.CBL, CNVFTC.CBL, CNVFTRX.CBL, CNVFVA.CBL, CNVTCS.CBL, CNVTDP.CBL, CNVTEA.CBL, CNVTEAA.CBL, CNVTGE.CBL, CNVTGH.CBL, CNVTGLD.CBL, CNVTGS.CBL, CNVTJLA.CBL, CNVTKE.CBL, CNVTLAB1.CBL, CNVTLBD.CBL, CNVTLBI1.CBL, CNVTLCI1.CBL, CNVTLID1.CBL, CNVTLNSA.CBL, CNVTLPI1.CBL, CNVTLRI.CBL, CNVTLU.CBL, CNVTNA.CBL, CNVTPA.CBL, CNVTPA1.CBL, CNVTPJ.CBL, CNVTRA.CBL, CNVTRAD.CBL, CNVTTC.CBL, CNVTTRX.CBL, CNVTTW.CBL, CNVX000.CBL, PAYDIRID.CBL, PLUGPFFT.SQB, PLUGTRDNFX.SQB, XRCTRYCD.CBL",,
+CNT_PRODUCT_TYPE,Indicates the specific product represented by the coverage.,DTL-PRODUCT-TYPE,"DTL-ANNUITY VALUE 'A'.
+DTL-VAR-ANNUITY VALUE 'W'.
+DTL-INDEX-ANNUITY VALUE 'B'.
+DTL-TRADITIONAL VALUE 'T'.
+DTL-JOINT-TRAD VALUE 'K'.
+DTL-LEVEL-TERM VALUE 'L'.
+DTL-ISL-LIFE VALUE 'I'.
+DTL-UNIVERSAL-LIFE VALUE 'U'.
+DTL-VUL VALUE 'V'.
+DTL-INDEX-UL VALUE 'E'.
+DTL-JOINT-UL VALUE 'J'.
+DTL-JOINT-VUL VALUE 'Z'.
+DTL-ACC-HEALTH VALUE 'H'.
+DTL-DECREASING-TERM VALUE 'D'.
+DTL-ANNUITY-PRODUCT VALUES 'A' 'W' 'B'.
+DTL-TRADITIONAL-PRODUCT VALUES 'T' 'K' 'L' 'D'.
+DTL-UL-PRODUCT VALUES 'U' 'V' 'E' 'J' 'Z'.
+DTL-VARIABLE-FUND-PRODUCT VALUES 'V' 'W' 'Z'.
+DTL-LIFE-PRODUCT VALUES 'U' 'I' 'T' 'J' 'K' 'E'.
+DTL-ADVANCE-LIFE-PRODUCT VALUES 'I' 'U' 'J' 'E'.
+DTL-ADVANCE-PRODUCT VALUES 'I' 'A' 'U' 'V' 'X' 'B' 'Z' 'J' 'E'.
+DTL-VALID-PRODUCT-TYPE VALUES 'A' 'W' 'B' 'T' 'K' 'L'
+'I' 'U' 'V'
+'E' 'J' 'Z'
+'H' 'D'.","Data Type: CHAR
+Length: 1 character
+Edit/Validation: Should not have spaces/blank
+
+Allowable Values Description:
+A: Deferred Annuity
+W: Variable Deferred Annuity  (inclusive of Registerd Indexed Linked Annuity - RILA)
+B: Index Deferred Annuity
+T: Traditional
+K: Joint Traditional
+L: Level Term
+I: ISL Life
+U: Universal Life 
+V: Variable Universal Life
+E: Index Universal Life (Single, Joint)
+J: Joint Universal Life
+Z: Joint Variable Universal Life
+H: Accident Health (Envisioned for future morbidity related contracts like LTC.  These are not currently supported in WMA nor envisioned by tabs.)
+D: Decreasing Term
+ ",,"CROSS REFERENCE
+
+This field must not be empty/blank.
+If condition not satisfied, send severe message.
+
+
+
+Payout annuities - both annuitized and immediate (and 'deferred immediate') and fixed and variable annuities are not here.  Know this traditionally goes to RMS payout system for WMA, but doesn't have to.  Excluding for now per steve.  
+
+ Note:  Per discussion with Mayank.  These are not really what WMA currently has - he edited to not put in payouts & such because not fully available in WMA.  Technically, WMA has a 2 character where the 2nd character 1=fixed, 2 = variable, 3=group, 5=payout
+
+
+","TRAD ,UL and ANN",End,For Annuity Product type value is A,PIC X(01).       ,CHAR,1,,"BALDELMY.CBL, CNVEEA.CBL, CNVENA.CBL, CNVEPW.CBL, CNVETCI.CBL, CNVFANN.CBL, CNVFPA.CBL, CNVTEA.CBL, CNVTGS.CBL, CNVTKE.CBL, CNVTPA1.CBL, CNVTRAD.CBL, CNVTTA.CBL, CNVTTL.CBL, CNVX000.CBL",,
+CNT_POLICY_PLAN_CODE,A user defined code which represents the plan code.  ,DTL-POLICY-PLAN-CODE             ,,"Data Type: CHAR
+Length: Must be exactly 10 character
+Edit/Validation: Should not have spaces/blank",,"CROSS REFERENCE
+
+This field must not be empty/blank.
+If condition not satisfied, send severe message.
+Note:  Eventually, we may need cross referencing to, for example, valuation plan codes which can be different.  Per Steve, this system is not included here, nor reinsurance system.","TRAD ,UL and ANN",End,,PIC X(10).          ,CHAR,10,,"CNVEEA.CBL, CNVEGA.CBL, CNVEGB.CBL, CNVEGD.CBL, CNVEGF.CBL, CNVEGG.CBL, CNVEGLI.CBL, CNVEGM.CBL, CNVEGR.CBL, CNVEGZ.CBL, CNVEPW.CBL, CNVETCI.CBL, CNVEUL.CBL, CNVFANN.CBL, CNVFEA.CBL, CNVFGK.CBL, CNVFLU.CBL, CNVFPA.CBL, CNVFTCI.CBL, CNVFVAC.CBL, CNVINFX.CBL, CNVTEA.CBL, CNVTGS.CBL, CNVTNA.CBL, CNVTNFX.CBL, CNVTPA.CBL, CNVTPA1.CBL, CNVTRAD.CBL, CNVTTA.CBL, CNVTTA1.CBL, CNVTTCI.cbl, CNVTTW.CBL, CNVX000.CBL, PLGRFACT.SQB",,
+CNT_BASE_PLAN_CODE,A user defined code which represents the plan code for the basic coverage.  It is also used as the search argument originally used to reference the contract rate files.,DTL-BASE-PLAN-CODE             ,,"Data Type: CHAR (default to CNT_POLICY_PLAN_CODE if empty)
+Length: Must be exactly 10 character
+Edit/Validation: Should not have spaces/blank",,"CROSS REFERENCE
+
+Default to CNT_POLICY_PLAN_CODE if field is blank and send warning message.
+
+
+I don't think I've seen this used in wma where base plan code is different than policy plan code.  What PW team did was, for example, set same base plan code for many different  occurrences and had PW T000 pointer for state specific items.  (rather than one overall policy plan code and specifi base plan codes).  Need to know more of how usage is perceived.","TRAD ,UL and ANN",End,,PIC X(10).          ,CHAR,10,,"CNVEEA.CBL, CNVEGA.CBL, CNVEGB.CBL, CNVEGD.CBL, CNVEGF.CBL, CNVEGG.CBL, CNVEGLI.CBL, CNVEGR.CBL, CNVFEA.CBL, CNVFGF.CBL, CNVTEA.CBL, CNVTGS.CBL, CNVTJLA.CBL, CNVX000.CBL",,
+CNT_POLICY_CODE,Indicates the type of restrictions placed on the policy.,DTL-POLICY-CODE                ,VALUES 'X' 'A' 'C''M' 'J' 'I' 'O' 'P''S' '5' 'B' 'Z'.,"Data Type: CHAR
+Length: 1 character
+Edit/Validation: Should not have spaces/blank
+
+Allowable Values Description:
+X: No Special Handling
+A: Absolute Assignment
+C: Collateral Assignment
+I: Irrevocable Beneficiary
+O: Ownership
+P: Pending Change
+S: Special Handling
+5: Suppressed Billing
+J: Juvenile
+M: Multiple Restrictions
+B: Bankruptcy
+Z: Multiple Collateral Assignment
+D:  Default for restrict codes not listed
+",,"There will be other restrict codes specific to policies in a given product and/or plan.  For example refresh policies in DBX extension have restrict code 'V'.  
+
+Mayank indicated he took these from NEUTRAL FILES which are NOT the same as the WMA admin system for example.  This is fine, but list still isn't complete.
+
+So, suggest some type of allowable user entry to add other restrict codes and meanings.  Open to suggestions - we could just do one overall default or allow several.  
+
+CROSS REFERENCE
+
+If CNT_POLICY_CODE = D, send warning message and ask for supplemental code actually used and its meaning.  Augment policy data loader with info.
+
+
+","TRAD ,UL and ANN",End,"This field is mapped to Special condition in WMA.  The Special Handling Code field is indicative to wmA, meaning no processing is performed as a result of this field. Any processing required as a result of the Special Handling Code field must be done externally",PIC X(01).       ,CHAR,1,,"CNVECS.CBL, CNVEEA.CBL, CNVFEA.CBL, CNVTGS.CBL, CNVX000.CBL",,
+CNT_ISSUE_COUNTRY,The country in which the policy was issued.,DTL-ISSUE-COUNTRY              ,VALUES '01' '02' '03' 'US' 'CA'.,"Data Type: CHAR
+Length: Must be exactly 2 character
+Edit/Validation: Should not have spaces/blank
+
+Allowable Values Description:
+US: United States
+CA: Canada
+03: Other Issue Country",,"
+Note:  For consistency with the Address tab, the implication is that a 'foreign country' here only means Canada, and US Territories/Islands, and Armed Forces.  This is fine - it could be misleading for companies that  truly sell in Japan, say (and some US companies do).  So, I'll assume we're NOT allowing a 'true' foreign country.  See notes in the Address tab.  
+
+(In the FUTURE for admin systems that might actually sell IN foreign countries and be subject to those countries' legislation, a cross reference with TAMRA/TEFRA values may be needed.  It's not needed now.)
+
+
+ ","TRAD ,UL and ANN",End,,PIC X(02).          ,CHAR,2,,"CNVECS.CBL, CNVEEA.CBL, CNVEFA.CBL, CNVEGA.CBL, CNVEGB.CBL, CNVEGD.CBL, CNVEGG.CBL, CNVEGI.CBL, CNVEGLI.CBL, CNVEGN.CBL, CNVEGR.CBL, CNVEGZ.CBL, CNVELBD.CBL, CNVELE.CBL, CNVELGP1.CBL, CNVENH.CBL, CNVEPW.CBL, CNVETB.CBL, CNVETC.CBL, CNVFEA.CBL, CNVFLBD.CBL, CNVTCS.CBL, CNVTDP.CBL, CNVTDP1.CBL, CNVTEA.CBL, CNVTEAA.CBL, CNVTFA.CBL, CNVTGE.CBL, CNVTGLI.CBL, CNVTGS.CBL, CNVTJLA.CBL, CNVTKX.CBL, CNVTLBD.CBL, CNVTNA.CBL, CNVTNH.CBL, CNVTPA.CBL, CNVTTC.CBL, CNVTTCI.cbl, CNVTTL.CBL, CNVTVP.CBL",,
+CNT_ISSUE_STATE,Indicates the issue state of the policy.,DTL-ISSUE-STATE                ,,"Data Type: CHAR
+Length: Must be exactly 2 character
+Edit/Validation: Should not have spaces/blank",,"OK- I checked and it looks like the long list of associated islands/territories have 2 characters (e.g., Northern Mariana Islands, U.S. Minor Outlying Islands, etc.)
+
+This allowables list should be consistent with the Address tab allowable list and include:  US postal codes for US states, armed forces in Europe/Pacific, Puerto Rico, Canada, and other US possessions/islands.  (Some companies allow sales in, for example, Guam.)","TRAD ,UL and ANN",End,,PIC X(02).       ,CHAR,2,,"CNVEEA.CBL, CNVFEA.CBL, CNVINFX.CBL, CNVTEA.CBL, CNVTFA.CBL, CNVTLBI1.CBL, CNVTNA.CBL, CNVTNFX.CBL, CNVTNH.CBL, CNVX000.CBL",,
+CNT_RESIDENT_STATE,The state or country code associated with the permanent primary residence of the payee,DTL-RESIDENT-STATE             ,,"Data Type: CHAR
+Length: Must be exactly 2 character
+Edit/Validation: Should not have spaces/blank",,"
+
+CROSS REFERENCE:
+
+CNT_RESIDENT_STATE = Address tab resident state for Owner Role
+If condition not satisfied, send severe message.
+","TRAD ,UL and ANN",End,,PIC X(02).       ,CHAR,2,,"CNVEEA.CBL, CNVENH.CBL, CNVFEA.CBL, CNVINFX.CBL, CNVTEA.CBL, CNVTFA.CBL, CNVTNA.CBL, CNVTNFX.CBL, CNVTNH.CBL, CNVTPA.CBL, CNVTPA1.CBL",,
+CNT_POLICY_STATUS,Describes the premium paying status of the policy.,DTL-POLICY-STATUS              ,VALUES '00' '01''02' '03' '04' '05' '06' '07' '08' '09''10''21' '22' '23' '24' '25' '31' '32' '33''34' '35' '97' '98' '99' .,"Data Type: CHAR
+Length: Must be exactly 2 character
+Edit/Validation: Should not have spaces/blank
+
+Allowable Values Description:
+00: Pending Issue
+01: Premium Paying
+02: Paid-Up Normal
+03: Extended Term
+04: Reduced Paid-Up
+05: Premium Waiver
+06: Lapsed
+07: Terminated
+08: Death Settled
+09: Claim Pending
+10: Lapse Pending
+21: Suspended Premium Paying
+22: Suspended Paid-Up Normal
+23: Suspended Extended Term
+24: Suspended Reduced Paid-Up
+25: Suspended Premium Waiver
+31: Death Claim Premium Paying
+32: Death Claim Paid-Up Normal
+33: Death Claim Extended Term
+34: Death Claim Reduced Paid-Up
+35: Death Claim Premium Waiver
+97: Hold Billing Vanish
+90: Hold Billing
+99: Suspended",,,"TRAD ,UL and ANN",Begin,,PIC X(02).,CHAR,2,,"CNVEEA.CBL, CNVEGF.CBL, CNVEGG.CBL, CNVEGH.CBL, CNVELGP1.CBL, CNVENA.CBL, CNVETRX.CBL, CNVEUL.CBL, CNVFEA.CBL, CNVFGF.CBL, CNVFTRX.CBL, CNVINFX.CBL, CNVTEA.CBL, CNVTGH.CBL, CNVTGS.CBL, CNVTNFX.CBL, CNVTPA1.CBL, CNVTPJ.CBL, CNVTRAD.CBL, CNVTTA.CBL, CNVTVP.CBL, CNVX000.CBL, PLGBILTRD.SQB, PLGRFACT.SQB",,
+CNT_ISSUE_AGE,The age of the insured for which the coverage was actually issued. This age controls premiums.,DTL-ISSUE-AGE                  ,,"Data Type: INT
+Length: 3
+Edit/Validation: Should not have spaces/blank
+It should have a numeric value",,"CROSS REFERENCE - in other tabs
+
+Note:  CNT_ISSUE_AGE may not equal CNT_JOINT_RATE AGE IF CNT_JOINT_LIFE_INDICATOR EQ J.
+
+Note:  Redundant with issue age of base coverage in Coverage tab.  Not a problem.","TRAD ,UL and ANN",End,,PIC 9(03).       ,INT,3,,"BALDELMY.CBL, CNVEEA.CBL, CNVEGD.CBL, CNVELAC1.CBL, CNVELAD1.CBL, CNVEUL.CBL, CNVFEA.CBL, CNVINFX.CBL, CNVTEA.CBL, CNVTGH.CBL, CNVTGS.CBL, CNVTJLA.CBL, CNVTKX.CBL, CNVTNFX.CBL, CNVTRAD.CBL",,
+DTL-TRANS-DATECNT_ISSUE_DATE,The date of issue of the basic coverage and any related substandard extra premiums. ,DTL-ISSUE-DATE.                ,,"Data Type: DATE
+Length:8
+Edit/Validation: Should have valid Date of format YYYYMMDD",,"CROSS REFERENCE - in other tabs
+
+Note:  Redundant with issue date of base coverage in Cpverage tab.  Not a problem.
+
+Be aware that different carriers may have very different meanings between issue date, coverage date, policy date, effective date, etc.
+
+Since WMA equates issue date with the base coverage effective date, I just used that as the field name.  But it may vary among carriers.","TRAD ,UL and ANN",End,,,DATE,,,"BALDELIMF.CBL, BALDELMY.CBL, CNVECS.CBL, CNVEEA.CBL, CNVEFA.CBL, CNVEGA.CBL, CNVEGB.CBL, CNVEGD.CBL, CNVEGF.CBL, CNVEGG.CBL, CNVEGH.CBL, CNVEGI.CBL, CNVEGLD.CBL, CNVEGLI.CBL, CNVEGM.CBL, CNVEGN.CBL, CNVEGR.CBL, CNVEGZ.CBL, CNVELAC1.CBL, CNVELAD1.CBL, CNVELBD.CBL, CNVELE.CBL, CNVELGP1.CBL, CNVELID1.CBL, CNVELRA.CBL, CNVELRI.CBL, CNVELU.CBL, CNVENA.CBL, CNVENH.CBL, CNVEPW.CBL, CNVETB.CBL, CNVETC.CBL, CNVETCI.CBL, CNVETRX.CBL, CNVEUL.CBL, CNVFANN.CBL, CNVFCS.CBL, CNVFEA.CBL, CNVFGF.CBL, CNVFLBD.CBL, CNVFLRI.CBL, CNVFLU.CBL, CNVFMA.CBL, CNVFNA.CBL, CNVFTRX.CBL, CNVINFX.CBL, CNVTCS.CBL, CNVTDA.CBL, CNVTDP.CBL, CNVTDP1.CBL, CNVTEA.CBL, CNVTEAA.CBL, CNVTFA.CBL, CNVTGE.CBL, CNVTGH.CBL, CNVTGLI.CBL, CNVTGS.CBL, CNVTJLA.CBL, CNVTKE.CBL, CNVTKX.CBL, CNVTLBD.CBL, CNVTLBI1.CBL, CNVTLRI.CBL, CNVTLU.CBL, CNVTNA.CBL, CNVTNFX.CBL, CNVTNH.CBL, CNVTPA.CBL, CNVTPJ.CBL, CNVTRAD.CBL, CNVTTC.CBL, CNVTTCI.cbl, CNVTTL.CBL, CNVTTRX.CBL, CNVTTW.CBL, CNVTVP.CBL, CNVX000.CBL, COIBAL.SQB, COIUTIL.SQB, DELMBALM.CBL, DELMBALT.CBL, PAYDIRID.CBL",,
+CNT_STATUS_DATE,Date policy changed to its current status. A status change would occur as part of processing a transaction.,DTL-STATUS-DATE.               ,,"Data Type: DATE
+Length:8
+Edit/Validation: Should have valid Date of format YYYYMMDD",,Not all transactions would change policy status so checking among the Financial and Non-Financial tabs is too complex AND those tabs don't always capture all the transactions during conversion period.,"TRAD ,UL and ANN",Begin,,,DATE,,,"CNVEGH.CBL, CNVETCI.CBL, CNVINFX.CBL, CNVTNFX.CBL, CNVTPA.CBL, CNVTTA.CBL, CNVTTA1.CBL, CNVTTL.CBL",,
+CNT_MATURE_EXPIRE_DATE,"The converted year, month, and day on which this policy matures or expires.  ",DTL-MATURE-EXPIRE-DATE.     ,,"Data Type: DATE
+Length:8
+Edit/Validation: Should have valid Date of format YYYYMMDD",,"CROSS REFERENCE
+
+This date must be > CNT_ISSUE_DATE.
+If condition not satisfied, send severe message.
+
+Note:  Redundant with expiry date of base coverage in Coverage tab.  Not a problem.","TRAD ,UL and ANN",End,,,DATE,,,"CNVEEA.CBL, CNVEGLI.CBL, CNVTEA.CBL, CNVTGS.CBL",,
+CNT_APPLICATION_DATE,The date on which the application was written.,DTL-APPLICATION-DATE.          ,,"Data Type: DATE
+Length:8
+Edit/Validation: Should have valid Date of format YYYYMMDD",,"CROSS REFERENCE
+
+This date must be <= CNT_ISSUE_DATE.
+If condition not satisfied, send severe message.
+
+","TRAD ,UL and ANN",End,,,DATE,,,"CNVEEA.CBL, CNVEGA.CBL, CNVEGB.CBL, CNVEGD.CBL, CNVEGF.CBL, CNVEGG.CBL, CNVEGI.CBL, CNVEGN.CBL, CNVEGR.CBL, CNVELAD1.CBL, CNVELCA1.CBL, CNVFEA.CBL, CNVTEA.CBL, CNVTGS.CBL",,
+CNT_PARTICIPATION_STATUS,Indicates whether the coverage is participating or nonparticipating in dividends.,DTL-PARTICIPATION-STATUS       ,VALUES 'P' 'N'.,"Data Type: CHAR
+Length: 1 character
+Edit/Validation: Should not have spaces/blank
+
+Allowable Values Description:
+P: Participating
+N: Non-Participating",,"Note:  While all product types, even older fixed annuities and fixed UL, can have participating and non-participating designs, this spreadsheet's tabs have assumed that dividends apply to traditional types only - this can be updated as needed, depending on source product designs.  
+
+CROSS REFERENCE
+
+IF CNT_PRODUCT_TYPE NE T and NE K and NE L and NE D, then this field = N.
+If condition not satisfied, send warning message for update in spreadsheet assumptions.","TRAD ,UL and ANN",,,PIC X(01).       ,CHAR,1,,"CNVEEA.CBL, CNVTEA.CBL, PLUGTRDNFX.SQB",,
+CNT_GUAR_PAR_STATUS,Indicates whether the coverage is participating or nonparticipating in other forms of participation.,DTL-GUAR-PAR-STATUS,VALUES'N' 'C' 'E' 'O,"Data Type: CHAR
+Length: 1 character
+Edit/Validation: Should not have spaces/blank
+
+Allowable Values Description:
+N: Guarantee Participating None
+C: Guarantee Participating Coupons
+E: Guarantee Participating Endowment
+O: Guarantee Participating Other",,,"TRAD ,UL and ANN",,,PIC X(01).       ,CHAR,1,,,,
+CNT_NFO_OPTION,Identifies the NFO selected by the applicant or assigned by default through reference to the plan description file.,DTL-NFO-OPTION                 ,VALUES'A' 'E' 'R' 'O' 'N' 'L' 'T' 'S' 'U' 'P',"Data Type: CHAR
+Length: 1 character
+Edit/Validation: Should not have spaces/blank
+
+Allowable Values Description:
+A: Automatic Premium Loan (APL)
+E: Extended Term Insurance (ETI)
+R: Reduced Paid-Up (RPU)
+O: Other
+N: None
+L: Lapse
+T: APL to ETI
+S: APL to RPU
+U: APL to AR
+P: Auto Premium Payment",,"I believe the T code says to do APL but if not enough value to pay the next premium, then do ETI.
+Similarly, the S code says to do APL but if not enough value to pay the next premium, then do RPU.
+
+Technically, for older scheduled premium deferred annuities, they could potentially have APL for non-payment (and even 'lapse').  Not used in current designs.
+
+
+Am assuming that auto prem payment refers to making premium out of a separate cash account (like divs go to accum cash account or similar)
+
+Not sure what AR is - perhaps it takes an APL but if not enough value, them takes from PUAs - Mayank didn't know where it came from either.  We'll ignore for now.  ","TRAD ,UL and ANN",,,PIC X(01).       ,CHAR,1,,"CNVEEA.CBL, CNVTEA.CBL",,
+CNT_SEX_CODE,"Indicates the birth sex (male, female, unisex) used for premium calculation purposes.",DTL-SEX-CODE                   , VALUES'1' '2' '3' 'B' 'J' 'U' 'M' 'F' 'E' .,"Data Type: CHAR
+Length: 1 character
+Edit/Validation: Should not have spaces/blank
+
+Allowable Values Description:
+1: Male
+M: Male
+2: Female
+F: Female
+3: Unisex
+B: Both (for frazier method F)
+J: Joint (for JEIA J in field below)
+N U: Unknown 
+E: Entity",,"
+
+CROSS REFERENCE
+
+If CNT_SEX_CODE=B, then CNT_JOINT_LIFE_INDICATOR = 'F'.
+If CNT_SEX_CODE=J, then CNT_JOINT_LIFE_INDICATOR = 'J'.
+
+If conditions not satisfied, send severe messages.
+
+If CNT_JOINT_LIFE_INDICATOR NE N, then must have coverages & roles for insureds 1 and 2 for their birth sex, issue age, rate class, FE, table, etc..  Benefits tab may also have.  See cross references in those tabs.
+
+
+Note:  A bit unclear as to B and J.  Note that some systems make the 1st & 2nd joint insured of a JEIA the same; however, I've seen some that capture both and am doing that here.","TRAD ,UL and ANN",Begin,"For Annuity, Sex code of Annuitant as of conversion start date.",PIC X(01).          ,CHAR,1,,"BALDELMY.CBL, CNVEEA.CBL, CNVINFX.CBL, CNVTEA.CBL, CNVTGH.CBL, CNVTGS.CBL, CNVTNFX.CBL",,
+CNT_JOINT_LIFE_INDICATOR,Indicates whether the policy covers more than one life,DTL-JOINT-LIFE-INDICATOR,,"Data Type: CHAR
+Length: 1 character
+Allowable Values Description:
+F = Frazier method (1st to die or 2nd to die) or Traditional Joint
+J = Joint Equivalent Individual Age
+N = Not joint","Note:  I originally had an additional O for other choice but deleted it.  If other choice comes in, we can classify based on whether it has a frazierization/trad type of calc or not.","
+CROSS REFERENCE:
+If CNT_PRODUCT_TYPE = K, J, Z, then CNT_JOINT_LIFE_INDICATOR = F or J.
+
+If CNT_PRODUCT_TYPE = E, then CNT_JOINT_LIFE INDICATOR = F, J, or N.
+
+If conditions not satisfied, send severe messages.
+
+
+","TRAD ,UL and ANN",,,PIC X(01),CHAR,1,,,,
+CNT_JOINT_NUMBER_OF_LIVES,Number of lifes covered,DTL-JOINT-NUMBER-OF-LIVES,,"Data Type: CHAR
+Length: 1 character
+Allowable Values Description:
+>= 1
+(Note:  If 1st to die setup of single life is not used as in WMA joint UL, the allowable value is 2.  See CNT_JOINT_RATE_AGE_REASON_CODE.)",,"
+
+CROSS REFERENCE:
+If CNT_JOINT_NUMBER_OF_LIVES = 1, then CNT_JOINT_RATE_AGE_REASON_CODE = G  (this is only based on CURRENT Cyber/WMA capabilities which handles 1st to die UL as single policy on one individual (using separate plan code for each policy and actuarial-defined COIs in PW tables) - not what another system could do - omit this cross reference for other systems that handle 1st to die frazierization)
+If condition not satisfied, send warning message.
+
+Note:  As provided here and stated elsewhere, a joint equivalent equal age is also assumed to have two lives.
+
+(NOTE:  RARELY, 1st to die has occurred for more than 2 lives in UL - however, this was still set up as 1 individual policy (where prob's were actuarially calculated for the x number of lives.)","TRAD ,UL ",,,PIC X(01),CHAR,1,,,,
+CNT_JOINT_RATE_AGE,It is calculated age used for premium rating when two individuals are insured under a joint policy and one joint equivalent individual age is being used,DTL-JOINT-RATE-AGE,,"Data Type: INT
+Length: 3
+Edit/Validation: It should not have a non-numeric value
+
+0's if not applicable",,"CROSS REFERENCE
+
+Note:  CNT_JOINT_RATE_AGE may not equal the CNT_ISSUE_ AGE if CNT_JOINT_LIFE_INDICATOR EQ J.
+
+IF CNT_JOINT_LIFE_INDICATOR = F or N, then CNT_JOINT_RATE_AGE = 0.
+If condition not satisfied, send severe messsage. 
+
+
+Note: this field is irrelevant if Frazierization method is used that MUST use ages of BOTH insureds dynamically.","TRAD ,UL ",,,PIC 9(03),INT,3,,,,
+CNT_JOINT_RATE_AGE_REASON_CODE,It defines method/reason behind the joint age used for premium rating when more than one life is insured a joint policy,DTL-JOINT-RATE-AGE-REASON-CODE,,"Data Type: CHAR
+Length: 1 character
+Mayank has combined some things.  So, am putting in these codes:
+
+F = Either Joint Trad or Joint UL Frazierization for both guar and curr COI rates, 2nd to die
+G = Either Joint Trad or Joint UL Frazier method for both guar and curr COI rates, 1st to die (Note:  Joint UL 1st to die is not handled by WMA nor Cyber at this time.  Contract is setup as single life but with actuarial calculated 1st to die COIs.  Joint Trad is handled by WMA.)
+P = User Frazierization method to blend guar COI, then use % of guar for the current COI, Joint UL 2nd to die
+
+Codes for Joint Equal Age methods:
+A = JEIA method:  Use the average age of the joint insureds (round down), but if the youngest insured plus the value in the Average Age Limit field is greater than that average, default to the youngest insured issue age plus the value in the Average Age Limit field
+B = JEIA method:  Add two ages.  If female in pair, subtract 5.  If there are 2 females in pair, subtract 10.  Divide by 2, round down.
+C=  JEIA method:  Add two ages.  If female in pair, subtract 5.  If there are 2 males in pair, add 5.  Divide by 2, round down.
+D = JEIA method:  Default to issue age of 1st joint insured entered.
+
+blank = not applicable
+",,"CROSS REFERENCE: 
+If CNT_JOINT_LIFE_INDICATOR = N, then CNT_JOINT_RATE_AGE_REASON_CODE = blank.
+If CNT_JOINT_LIFE_INDICATOR = F, then CNT_JOINT_RATE_AGE_REASON_CODE = F or G or P.
+If CNT_JOINT_LIFE_INDICATOR = J, then CNT_JOINT_RATE_AGE_REASON_CODE = A, B, C, or D.
+
+
+If conditions not satisfied, send severe messages.","TRAD ,UL ",,,PIC X(01),CHAR,1,,,,
+CNT_PAYUP_DATE,"For all policies other than renewable term, this is the coded day and month and year on which the basic coverage becomes (or became) paid-up.  For renewable term coverages we need true paid up date, this is the date of the next renewal. ",DTL-PAYUP-DATE.                ,,"Data Type: DATE
+Length:8
+Edit/Validation: Should have valid Date of format YYYYMMDD",,"
+CROSS REFERENCE:  Paidup date <= contract maturity date.
+If condition not satisfied, send severe message.
+
+(Note:  For a single premium product, this field = CNT_ISSUE_DATE.)  <-- but this distinction is not allowed in this speadsheet (nor easily obtained without translation from plan code).","TRAD ,UL, ANN",,,,DATE,,,"BALDELIMF.CBL, CNVEEA.CBL, CNVTEA.CBL, CNVTGS.CBL, CNVTJLA.CBL, DELMBALM.CBL, DELMBALT.CBL",,
+CNT_QUALIFICATION_CODE,Identifies the qualification status of the policy.,DTL-QUALIFICATION-CODE         ,"VALUES 'N' 'O' 'Q' 'S' 'X' 'K' 'H' 'I' 'T' 'P' 'R' 'D' 'X' 'Z'
+'A' 'E' 'S' 'U' 'C'..","Data Type: CHAR
+Length: 1 character
+Edit/Validation: Should not have spaces/blank
+
+Allowable Values Description:
+N: Non-Qualified
+Q: Qualified
+O: Other Qualified
+K: Keogh Plan
+S: Simplified Employee Pension (SEP)
+H: HR10 Plan
+I: Individual Retirement Account (IRA)
+T: SIMPLE IRA
+P: Pension Plan
+R: Roth IRA
+D: Government Deferred Plan
+Z: 412i Plan
+A: Tax-Sheltered Plan
+E: Tax-Exempt Organization
+U: Custodial IRA
+C: Qualified Plan (QP",,"
+
+CROSS REFERENCE:
+If CNT_QUALIFICATION CODE = Q, K, I, T, P, R, U, then CNT_PRODUCT_TYPE must be A, W, or B.
+If condition not satified, send severe message.
+
+(i.e., generally, for above codes, life insurance contracts are not allowed)
+
+(Note:  unclear as to distinction of C from Q.)","TRAD, UL, ANN  ",Begin,"Full list of qualified products are defined under  DTL-QUALIFIED 88 level.Confirmation required from Cyber Life , what are the qualified products currently administered in source system.",PIC X(01).       ,CHAR,1,,"CNVEEA.CBL, CNVEFA.CBL, CNVENA.CBL, CNVERA.CBL, CNVFANN.CBL, CNVFEA.CBL, CNVFMA.CBL, CNVFMDA.CBL, CNVFNA.CBL, CNVFTB.CBL, CNVTEA.CBL, CNVTGH.CBL, CNVTRA.CBL, CNVTRAD.CBL, CNVTTL.CBL, PLUGCSTB.SQB",,
+CNT_PLAN_OPTION_ORIGINAL,indicates level or increasing death benefit.,DTL-PLAN-OPTION-ORIGINAL       ,VALUES 'L' 'V' 'R' 'C'.,"Data Type: CHAR
+Length: 1 character
+Edit/Validation: Should not have spaces/blank blank if not applicable
+
+Allowable Values Description:
+L: Level Death Benefit
+V: Variable Death Benefit
+R: Return of Premium Death Benefit
+C: Cost-of-Living Adjustment (COLA) Death Benefit
+blank:  Not applicable",,"
+
+CROSS REFERENCE
+
+If CNT_PRODUCT_TYPE = A, W, B, or H, then this field is blank.
+If CNT_PLAN_OPTION = C AND CNT_PRODUCT_TYPE = T, K, L, I, U, V, E, J, Z, D then at least one occurrence of CVG_TYPE = COLA must exist.
+If conditions not satisfied, send severe messages.
+
+Note:  I've seen 1st to die's that allow the two insureds to have separate DB options.  I'm ignoring this for now.
+
+NOTE:  Non-Financial History transactions allowed for DBO changes during conversion period.  Hence, this field captures the 'original' DBO at time of conversion start.
+
+Note: as indicated elsewhere we'll need to capture fields relevant to 1035 exchanges/internal & external replacements.","TRAD, UL,ANN",,,PIC X(01).       ,CHAR,1,,CNVEEA.CBL,,
+CNT_GRACE_EXPIRY_DATE,Contains the date on which the policy's grace period expires at the end of the policy's grace period window,DTL-GRACE-EXPIRY-DATE,,"Data Type: DATE
+Length:8
+Edit/Validation: Should have valid Date of format YYYYMMDD ",,"
+CROSS REFERENCE:
+
+If CNT_PRODUCT_TYPE = W, B, or H, then this field = blanks.
+If condition not satisfied, send severe message.
+
+Note:  Some older fixed deferred annuity policies with scheduled required premiums may have had grace processing.  Not done on current designs.
+
+Per Mayank, this field is the literal grace period (e.g., 60 days) for a policy.  this is the grace period end date when a policy is in lapse pending.
+
+Note:  The NLG expiry date in the NLG tab is not a grace date but an overall date for when the NLG benefit is no longer applicable, per my understanding.  I do not see grace dates in any other tab (financial nor non-financial).  The NLG itself can 'lapse' but still be 'in effect' - i.e., if pholder pays enough premium, the NLG benefit may become active again.","TRAD,UL and ANN",Begin,Exists on the Loan Segment. A value of E indicates Grace Period End Date processing of TQ/NT transactions,,DATE,,,,,
+CNT_SERV_AGENT,The specific agent designated as the Servicing Agent for the policy,DTL-SERV-AGENT,,"Data Type: CHAR
+Length: Must be exactly 12 character",,"CROSS REFERENCE
+
+If blank, send warning message to augment servicing agent information.","TRAD,UL and ANN",End,,PIC X(12).       ,CHAR,12,,"CNVEEA.CBL, CNVTEA.CBL",,
+CNT_SERV_AGENCY,The agency or GA to which the servicing agent is attached,DTL-SERV-AGENCY,,"Data Type: CHAR
+Length: Must be exactly 12 character",,"CROSS REFERENCE
+
+If blank, send warning message to augment servicing agency information.","TRAD ,UL and ANN",End,,PIC X(12).       ,CHAR,12,,"CNVEEA.CBL, CNVTEA.CBL",,
+CNT_PHONE_AUTH_TRNSFR,Telephone transfers are authorized,DTL-PHONE-AUTH-TRNSFR,VALUES 'Y' 'N',"Data Type: CHAR
+Length: 1 character
+Edit/Validation: Should not have spaces/blank
+
+Allowable Values Description:
+Y: Phone Transfer Allowed
+N: Phone Transfer Not Allowed",,,"TRAD ,UL and ANN",Begin,,PIC X,CHAR,1,,,,
+CNT_REINS_TYPE,Reinsurance type,DTL-REINS-TYPE,,"Data Type: CHAR
+Length: 1 character
+Allowable Values Description:
+A:Automatic
+F:Facultative
+Blank:  No reinsurance",,"CROSS REFERENCE
+
+Coverage and/or benefit occurrences may have reinsurance codes that differ from the CNT_REINS_TYPE. 
+
+IF CNT_PRODUCT_TYPE = T, K, L, I, U, V, E, J, Z, or D AND CVG_TYPE = TERM, then this field = CVG_REINS_TYPE.
+IF CNT_PRODUCT_TYPE = A, W, or B and CVG_TYPE = ANNT, then this field = CVG_REINS_TYPE.
+If conditions not satisfied, send severe messages.
+
+","TRAD,UL and ANN",End,,PIC X(01),CHAR,1,,"CNVEEA.CBL, CNVEGA.CBL, CNVEGB.CBL, CNVEGD.CBL, CNVEGF.CBL, CNVEGG.CBL, CNVEGI.CBL, CNVEGR.CBL, CNVFLU.CBL, CNVTEA.CBL, CNVTGS.CBL",,
+,,,,,,,,,,,,,,,,

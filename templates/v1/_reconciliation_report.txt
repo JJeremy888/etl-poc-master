@@ -1,0 +1,33 @@
+======================================================================
+VALIDATION_RULES_MASTER -> TEMPLATE RECONCILIATION REPORT
+======================================================================
+
+[FIELD-LEVEL VALIDATION RULES]  (validation_rules.csv)
+  CNT: 63 rules across 32 fields
+  ADD: 36 rules across 23 fields
+  ROL: 68 rules across 35 fields
+  CVG: 92 rules across 41 fields
+  TOTAL: 259 rules across 131 fields
+
+  OK: every field-level rule_type is registered in the engine.
+
+[CROSS-REFERENCE RULES]  (cross_references.csv)
+  conditional: 78  (registered)
+  conditional_blank: 12  (registered)
+  cross_table_match: 19  (registered)
+  date_greater_than: 2  (registered)
+  date_less_than_equal: 2  (registered)
+  field_compare: 3  (registered)
+  match_across_occurrences: 2  (registered)
+  match_through_intermediate: 1  (registered)
+  occurrence_check: 7  (registered)
+  occurrence_count: 7  (registered)
+  required: 8  (registered)
+  substring_blank: 1  (registered)
+  unique_per_group: 1  (registered)
+  value_compare: 13  (registered)
+  value_when_group_count: 1  (registered)
+  values_present: 1  (registered)
+  TOTAL: 158 cross-reference rows
+
+  OK: every cross-reference type has an engine handler.

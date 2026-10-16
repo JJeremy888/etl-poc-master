@@ -1,0 +1,9 @@
+{
+  "name": "Run Unit Tests After Each Task",
+  "description": "Automatically runs pytest on Option B tests after Kiro completes each spec task. If any test fails, Kiro will attempt to fix the failure before moving to the next task.",
+  "trigger": "PostTaskExec",
+  "command": "python -m pytest option_b/tests/ -v --tb=short",
+  "workingDirectory": ".",
+  "continueOnFailure": false,
+  "notes": "continueOnFailure is false — Kiro must not proceed to the next task if tests are failing. Tests run against the Option B PySpark engine using local[2] Spark mode. The hook uses pytest return code only (0 = all pass, 1 = failures)."
+}

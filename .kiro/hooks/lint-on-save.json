@@ -1,0 +1,10 @@
+{
+  "name": "Auto-Lint Python Files on Save",
+  "description": "Automatically runs ruff to detect and fix code style issues every time a Python file is saved. Keeps code consistent without manual intervention.",
+  "trigger": "PostFileSave",
+  "fileFilter": "**/*.py",
+  "command": "python -m ruff check --fix .",
+  "workingDirectory": ".",
+  "continueOnFailure": true,
+  "notes": "continueOnFailure is true — lint warnings should not block progress. Ruff fixes what it can automatically. Applies to all Python files across the workspace."
+}

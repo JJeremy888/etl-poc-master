@@ -1,0 +1,7 @@
+{
+  "section_name": "output_config",
+  "required_columns": ["output_id", "adapter_type", "delivery_mechanism", "delivery_target", "include_severity"],
+  "optional_columns": ["description"],
+  "valid_adapter_types": ["positional_flat_file"],
+  "valid_delivery_mechanisms": ["local_filesystem"]
+}

@@ -1,0 +1,9 @@
+{
+  "name": "Validate Template Files Present Before Session",
+  "description": "Checks that the active template directory (templates/v1/) exists with all required CSV files before Kiro begins implementation. Stops immediately with a clear message if any template file is missing.",
+  "trigger": "PreSpecStart",
+  "command": "python -c \"import sys; from pathlib import Path; required = ['templates/v1/validation_rules.csv', 'templates/v1/transformation_mappings.csv', 'templates/v1/table_dependencies.csv', 'templates/v1/output_config.csv']; missing = [f for f in required if not Path(f).exists()]; sys.exit(0) if not missing else (print(f'ERROR: Template files not found: {missing}\\nPlease ensure templates/v1/ contains all required CSV files before starting.'), sys.exit(1))\"",
+  "workingDirectory": ".",
+  "continueOnFailure": false,
+  "notes": "continueOnFailure is false — Kiro must not proceed if template files are missing. The Option B engine reads all rules from these versioned template CSVs at runtime."
+}

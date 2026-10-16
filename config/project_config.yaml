@@ -1,0 +1,15 @@
+project: CNT_PHASE1
+
+input:
+  format: CSV
+  delimiter: COMMA    # Options: COMMA, PIPE, TAB
+  encoding: UTF-8
+  has_header: true
+
+output:
+  format: CSV
+  delimiter: COMMA    # Must match input delimiter
+  encoding: UTF-8
+  clean_suffix: _clean
+  warning_suffix: _warning
+  severe_suffix: _severe

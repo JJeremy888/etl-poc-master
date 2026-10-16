@@ -1,0 +1,5 @@
+{
+  "section_name": "table_dependencies",
+  "required_columns": ["child_table", "parent_table", "join_fields_child", "join_fields_parent"],
+  "optional_columns": []
+}

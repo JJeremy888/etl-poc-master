@@ -1,0 +1,10 @@
+{
+  "active_version": "v1",
+  "versions": [
+    {
+      "version_id": "v1",
+      "created_at": "2026-07-27T00:00:00Z",
+      "description": "Initial POC template — 71 validation rules, 400 transformation mappings, 4 tables (CNT, CVG, ROL, ADD)"
+    }
+  ]
+}

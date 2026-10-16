@@ -1,0 +1,9 @@
+{
+  "name": "Validate Option B Pipeline End-to-End",
+  "description": "After the full spec is complete, this hook: (1) verifies template files exist in templates/v1/, (2) runs the Option B pipeline against local staging data, (3) verifies that output files (ea_transaction.txt, error records, audit trail) are produced.",
+  "trigger": "PostSpecComplete",
+  "command": "python -c \"import sys; from pathlib import Path; templates = ['templates/v1/validation_rules.csv','templates/v1/transformation_mappings.csv','templates/v1/output_config.csv','templates/v1/table_dependencies.csv']; missing = [f for f in templates if not Path(f).exists()]; sys.exit(0) if not missing else (print(f'MISSING TEMPLATE FILES: {missing}'), sys.exit(1))\" && python -m option_b.main --validate --transform --output && python -c \"from pathlib import Path; files = ['output/ea_transaction.txt','output/errors','output/audit_trail.json']; missing = [f for f in files if not Path(f).exists()]; print('ALL OUTPUT FILES VERIFIED OK') if not missing else (print(f'MISSING OUTPUT: {missing}'), __import__('sys').exit(1))\"",
+  "workingDirectory": ".",
+  "continueOnFailure": false,
+  "notes": "This hook runs three steps: (1) verify template files exist, (2) run the full Option B pipeline (PySpark local mode) against staging_data/, (3) verify output artifacts are produced. No code generation occurs — the engine interprets template rules directly."
+}

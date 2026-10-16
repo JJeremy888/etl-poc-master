@@ -1,0 +1,982 @@
+mapping_id,source_table,source_field,target_field,transformation_type,target_length,target_data_type,decimal_places,signed,comp3,padding_rule,default_value,date_handling,truncation_rule,sequence
+MAP_003,,,RDW-LENGTH,conditional_derived,8,BINARY,0,Y,N,left_zero,,,,4
+MAP_004,,,TRX-RETRIEVAL-KEY,GROUP_OR_PARENT,,,,N,N,,,,,5
+MAP_005,,,TRX-SORT-KEY,GROUP_OR_PARENT,,,,N,N,,,,,6
+MAP_006,CNT,CNT_COMPANY_CODE,COMPANY-CODE,direct_copy,3,CHAR,0,N,N,right_space,,,,7
+MAP_007,,,SORT-CTL-IND,conditional_derived,1,CHAR,0,N,N,right_space,,,,8
+MAP_008,CNT,CNT_POLICY_NUMBER,MASTER-ID,direct_copy,15,CHAR,0,N,N,right_space,,,,9
+MAP_009,CNT,CNT_ISSUE_DATE,EFFECTIVE-DATE,GROUP_OR_PARENT,,,,N,N,,,,,10
+MAP_010,CNT,CNT_ISSUE_DATE,EFFECTIVE-YY,date_split_year,4,NUMERIC,0,N,N,left_zero,,,,11
+MAP_011,CNT,CNT_ISSUE_DATE,EFFECTIVE-MM,date_split_month,2,NUMERIC,0,N,N,left_zero,,,,12
+MAP_012,CNT,CNT_ISSUE_DATE,EFFECTIVE-DD,date_split_day,2,NUMERIC,0,N,N,left_zero,,,,13
+MAP_013,,,SEQUENCE-NO,conditional_derived,2,NUMERIC,0,N,N,left_zero,,,,14
+MAP_014,,'EA',TRX-CODE,conditional_derived,4,CHAR,0,N,N,right_space,,,,15
+MAP_015,CNT,CNT_ISSUE_DATE,TRX-DATE,GROUP_OR_PARENT,,,,N,N,,,,,16
+MAP_016,CNT,CNT_ISSUE_DATE,TRX-YY,date_split_year,4,NUMERIC,0,N,N,left_zero,,,,17
+MAP_017,CNT,CNT_ISSUE_DATE,TRX-MM,date_split_month,2,NUMERIC,0,N,N,left_zero,,,,18
+MAP_018,CNT,CNT_ISSUE_DATE,TRX-DD,date_split_day,2,NUMERIC,0,N,N,left_zero,,,,19
+MAP_019,,,DATE-PROCESSED,conditional_derived,7,BINARY,0,Y,N,left_zero,,,,20
+MAP_020,,,TIME-PROCESSED,conditional_derived,7,BINARY,0,Y,N,left_zero,,,,21
+MAP_021,,,HEADER-INFO,GROUP_OR_PARENT,,,,N,N,,,,,22
+MAP_022,,,ORIGINATOR-INFO,GROUP_OR_PARENT,,,,N,N,,,,,23
+MAP_023,,,OPER-ID,conditional_derived,3,CHAR,0,N,N,right_space,,,,24
+MAP_024,,,TERM-ID,conditional_derived,4,CHAR,0,N,N,right_space,,,,25
+MAP_025,,"'POLCDATA'                           
+   TO ORIGINATOR-CODE        IN EA-TRX-REC.
+
+Verify with client such as WRE.",ORIGINATOR-CODE,conditional_derived,8,CHAR,0,N,N,right_space,,,,26
+MAP_026,,,SECONDARY-ID,conditional_derived,5,CHAR,0,N,N,right_space,,,,27
+MAP_027,,,ONLINE-DELETED-REVISED,conditional_derived,1,CHAR,0,N,N,right_space,,,,28
+MAP_028,,,DELETED-RECORD,condition_name,,,,,,,,,,29
+MAP_029,,,REVISED-RECORD,condition_name,,,,,,,,,,30
+MAP_030,,,FILE-CODE,conditional_derived,5,BINARY,0,Y,N,left_zero,,,,31
+MAP_031,,,REVERSAL-CODE,conditional_derived,1,CHAR,0,N,N,right_space,,,,32
+MAP_032,,,REVERSAL-FILE-CODE,conditional_derived,5,BINARY,0,Y,N,left_zero,,,,33
+MAP_033,,,PRIOR-STATUS-CODE,conditional_derived,1,CHAR,0,N,N,right_space,,,,34
+MAP_034,,Initialize,CURR-STATUS-CODE,conditional_derived,1,CHAR,0,N,N,right_space,,,,35
+MAP_035,CNT,"CNT_PRODUCT_TYPE
+IF CNT_PRODUCT_TYPE          IS T,K,L,D
+   MOVE 'T1'                              
+     TO PRODUCT-CODE        IN PASS-AREA  
+END-IF.                                   
+
+MOVE PRODUCT-CODE           IN PASS-AREA
+  TO PRODUCT-CODE           IN EA-TRX-REC",PRODUCT-CODE,direct_copy,2,CHAR,0,N,N,right_space,,,,36
+MAP_036,,,TRX-TYPE,conditional_derived,2,CHAR,0,N,N,right_space,,,,37
+MAP_037,,,NBU-TRX-TYPE,condition_name,,,,,,,,,,38
+MAP_038,,,BR-TRX-TYPE,condition_name,,,,,,,,,,39
+MAP_039,,,PROCESS-DATE,GROUP_OR_PARENT,,,,N,N,,,,,40
+MAP_040,,,PROCESS-YY,conditional_derived,4,NUMERIC,0,N,N,left_zero,,,,41
+MAP_041,,,PROCESS-MM,conditional_derived,2,NUMERIC,0,N,N,left_zero,,,,42
+MAP_042,,,PROCESS-DD,conditional_derived,2,NUMERIC,0,N,N,left_zero,,,,43
+MAP_043,,,SOURCE-OF-TRX-CODE,conditional_derived,1,CHAR,0,N,N,right_space,,,,44
+MAP_044,,,EXPLODED-TRX,condition_name,,,,,,,,,,45
+MAP_045,,,EXTERNAL-TRX,condition_name,,,,,,,,,,46
+MAP_046,,,INTERNAL-TRX,condition_name,,,,,,,,,,47
+MAP_047,,,REAPPLY-TRX,condition_name,,,,,,,,,,48
+MAP_048,CNT,"CNT_ISSUE_COUNTRY
+  TO COUNTRY-OF-ORIGIN        IN EA-TRX-REC.",COUNTRY-OF-ORIGIN,conditional_derived,2,CHAR,0,N,N,right_space,,,,49
+MAP_049,,"""2""",CURRENCY-CODE,conditional_derived,1,CHAR,0,N,N,right_space,,,,50
+MAP_050,ROL,ROL_LANGUAGE_CODE,LANGUAGE-CODE,direct_copy,1,CHAR,0,N,N,right_space,,,,51
+MAP_051,,,DISBURSEMENT-IND,conditional_derived,1,CHAR,0,N,N,right_space,,,,52
+MAP_052,,"""EA  """,PRIME-EVENT-TRX-CODE,conditional_derived,4,CHAR,0,N,N,right_space,,,,53
+MAP_053,,,PRIME-EVENT-FILE-CODE,conditional_derived,5,BINARY,0,Y,N,left_zero,,,,54
+MAP_054,,,REAL-TIME-PROCESS-IND,conditional_derived,1,CHAR,0,N,N,right_space,,,,55
+MAP_055,,,REAL-TIME-PROCESS,condition_name,,,,,,,,,,56
+MAP_056,,,FILLER,conditional_derived,2,CHAR,0,N,N,right_space,,,,57
+MAP_057,,,ERROR-INFO,GROUP_OR_PARENT,,,,N,N,,,,,58
+MAP_058,,,ERROR-CODE,conditional_derived,4,CHAR,0,N,N,right_space,,,,59
+MAP_059,,,FAV-CODE,conditional_derived,6,CHAR,0,N,N,right_space,,,,60
+MAP_060,,,FILLER,conditional_derived,35,CHAR,0,N,N,right_space,,,,61
+MAP_061,,,BROKER-DEALER-INFO,GROUP_OR_PARENT,,,,N,N,,,,,62
+MAP_062,,,TRADE-PARTNER-ID-NUM,conditional_derived,20,CHAR,0,N,N,right_space,,,,63
+MAP_063,,,CLEARINGHOUSE-NAME,conditional_derived,30,CHAR,0,N,N,right_space,,,,64
+MAP_064,,,TRADE-PARTNER-CTL-NUM,conditional_derived,30,CHAR,0,N,N,right_space,,,,65
+MAP_065,,,CLEARINGHOUSE-CTL-NUM,conditional_derived,30,CHAR,0,N,N,right_space,,,,66
+MAP_066,,,DISTRIB-CUST-ACCT-NUM,conditional_derived,30,CHAR,0,N,N,right_space,,,,67
+MAP_067,,,DISTRIB-TRX-ID-NUM,conditional_derived,30,CHAR,0,N,N,right_space,,,,68
+MAP_068,,,APPLICATION-CTL-NUM,conditional_derived,20,CHAR,0,N,N,right_space,,,,69
+MAP_069,,spaces,FILLER-FUTURE-USE,conditional_derived,68,CHAR,0,N,N,right_space,,,,70
+MAP_070,,,TRX-INFO,GROUP_OR_PARENT,,,,N,N,,,,,71
+MAP_072,,,INSURED-INFO-AREA,GROUP_OR_PARENT,,,,N,N,,,,,73
+MAP_073,CNT,"CNT_COMPANY_CODE
+  TO STATUTORY-COMPANY-CODE IN EA-TRX-REC.",STATUTORY-COMPANY-CODE,conditional_derived,3,CHAR,0,N,N,right_space,,,,74
+MAP_074,,N,STATUS-REQUEST-CODE,conditional_derived,1,CHAR,0,N,N,right_space,,,,75
+MAP_075,,,NO-STATUS-REQUESTED,condition_name,,,,,,,,,,76
+MAP_076,,,CO-SEG-TELLS-STATUS,condition_name,,,,,,,,,,77
+MAP_077,,,STATUS-REQUESTED,condition_name,,,,,,,,,,78
+MAP_078,CVG,"CVG_PLAN_CODE
+
+Note:  This is a correction from prior mapping.",PLAN-CODE,direct_copy,6,CHAR,0,N,N,right_space,,,,79
+MAP_079,CVG,CVG_UNITS,POLICY-CVG-UNITS,direct_copy,11,PACKED_DECIMAL,5,Y,Y,left_zero,,,,80
+MAP_080,CVG,CVG_RATE_CLASS,PREM-CLASS-CODE,direct_copy,1,CHAR,0,N,N,right_space,,,,81
+MAP_081,CNT,CNT_ISSUE_DATE,POLICY-EFF-DATE,GROUP_OR_PARENT,,,,N,N,,,,,82
+MAP_082,CNT,CNT_ISSUE_DATE,POLICY-EFF-YY,date_split_year,4,NUMERIC,0,N,N,left_zero,,,,83
+MAP_083,CNT,CNT_ISSUE_DATE,POLICY-EFF-MM,date_split_month,2,NUMERIC,0,N,N,left_zero,,,,84
+MAP_084,CNT,CNT_ISSUE_DATE,POLICY-EFF-DD,date_split_day,2,NUMERIC,0,N,N,left_zero,,,,85
+MAP_085,CNT,CNT_ISSUE_DATE,POLICY-ISSUE-DATE,GROUP_OR_PARENT,,,,N,N,,,,,86
+MAP_086,CNT,CNT_ISSUE_DATE,POLICY-ISSUE-YY,date_split_year,4,NUMERIC,0,N,N,left_zero,,,,87
+MAP_087,CNT,CNT_ISSUE_DATE,POLICY-ISSUE-MM,date_split_month,2,NUMERIC,0,N,N,left_zero,,,,88
+MAP_088,CNT,CNT_ISSUE_DATE,POLICY-ISSUE-DD,date_split_day,2,NUMERIC,0,N,N,left_zero,,,,89
+MAP_089,CVG,CVG_ISSUE_DATE,RATE-EFF-DATE,GROUP_OR_PARENT,,,,N,N,,,,,90
+MAP_090,CVG,CVG_ISSUE_DATE,RATE-EFF-YY,date_split_year,4,NUMERIC,0,N,N,left_zero,,,,91
+MAP_091,CVG,CVG_ISSUE_DATE,RATE-EFF-MM,date_split_month,2,NUMERIC,0,N,N,left_zero,,,,92
+MAP_092,CVG,CVG_ISSUE_DATE,RATE-EFF-DD,date_split_day,2,NUMERIC,0,N,N,left_zero,,,,93
+MAP_093,CVG,CVG_ISSUE_DATE,UNDER-EFF-DATE,GROUP_OR_PARENT,,,,N,N,,,,,94
+MAP_094,CVG,CVG_ISSUE_DATE,UNDER-EFF-YY,date_split_year,4,NUMERIC,0,N,N,left_zero,,,,95
+MAP_095,CVG,CVG_ISSUE_DATE,UNDER-EFF-MM,date_split_month,2,NUMERIC,0,N,N,left_zero,,,,96
+MAP_096,CVG,CVG_ISSUE_DATE,UNDER-EFF-DD,date_split_day,2,NUMERIC,0,N,N,left_zero,,,,97
+MAP_097,,,UNDER-BASIS-CODE,conditional_derived,1,CHAR,0,N,N,right_space,,,,98
+MAP_098,,"""00""",ISSUE-REASON-CODE,conditional_derived,2,CHAR,0,N,N,right_space,,,,99
+MAP_099,CNT,CNT_QUALIFICATION_CODE,LINE-OF-BUSINESS-CODE,direct_copy,3,CHAR,0,N,N,right_space,,,,100
+MAP_100,,Only Y is moved,AUTO-PREM-LOAN-IND,conditional_derived,1,CHAR,0,N,N,right_space,,,,101
+MAP_101,CNT,"CNT_NFO_OPTION eq N - move N
+CNT_NFO_OPTION eq E or T - move E
+CNT_NFO_OPTION eq 'R' or 'S' - Move 'R'.
+CNT_NFO_OPTION eq O - Move N
+CNT_NFO_OPTION eq A - Move A
+CNT_POLICY_STATUS eq 03 - Move E
+CNT_POLICY_STATUS eq 04- Move R
+CNT_PRODUCT_TYPE eq I - move E",NON-FORFEIT-OVERRIDE-IND,direct_copy,1,CHAR,0,N,N,right_space,,,,102
+MAP_102,,"- CVG_DIV_OPTION_1 eq 1 - Move 0
+- CVG_DIV_OPTION_1 eq 2 - Move 1
+- CVG_DIV_OPTION_1 eq 5, 6, or D - Move 2
+- CVG_DIV_OPTION _1 eq 4 - Move 3
+- CVG_DIV_OPTION_1 eq 3 - Move 4
+- CVG_DIV_OPTION_1 eq 7 - Move 7
+- CVG_DIV_OPTION_1 eq 8 - Move 8
+- CVG_DIV_OPTION_1 eq blank - Move blank
+- If PRM_BILLING_FORM = If V (vanish prem) and CVG_DIV_OPTION_1 = 1  -  Move 3",DIVIDEND-OPT-CODE,conditional_derived,1,CHAR,0,N,N,right_space,,,,103
+MAP_103,,"- CVG_DIV_OPTION_2 eq 1 - Move 0
+- CVG_DIV_OPTION_2 eq 2 - Move 1
+- CVG_DIV_OPTION_2 eq 5, 6, or D - Move 2
+- CVG_DIV_OPTION _2 eq 4 - Move 3
+- CVG_DIV_OPTION_2 eq 3 - Move 4
+- CVG_DIV_OPTION_2 eq 7 - Move 7
+- CVG_DIV_OPTION_2 eq 8 - Move 8
+- CVG_DIV_OPTION_2 eq blank - Move blank
+- If PRM_BILLING_FORM = If V (vanish prem) and CVG_DIV_OPTION_2 = 1  -  Move 3",SECONDARY-DIVIDEND-CODE,conditional_derived,1,CHAR,0,N,N,right_space,,,,104
+MAP_104,ROL,ROL_CLIENT_ID,INSURED-DIRECTORY-ID,direct_copy,15,CHAR,0,N,N,right_space,,,,105
+MAP_105,CNT,CNT_RESIDENT_STATE,RESIDENT-STATE,direct_copy,3,CHAR,0,N,N,right_space,,,,106
+MAP_106,CNT,CNT_ISSUE_STATE,POLICY-ISSUE-STATE,direct_copy,3,CHAR,0,N,N,right_space,,,,107
+MAP_107,,,AREA-CODE,conditional_derived,6,CHAR,0,N,N,right_space,,,,108
+MAP_108,,,LICENSE-COUNTY,conditional_derived,6,CHAR,0,N,N,right_space,,,,109
+MAP_109,CNT,CNT_ISSUE_COUNTRY,ISSUE-COUNTRY,direct_copy,2,CHAR,0,N,N,right_space,,,,110
+MAP_110,CNT,CNT_JOINT_LIFE_INDICATOR,JOINT-IND,direct_copy,1,CHAR,0,N,N,right_space,,,,111
+MAP_111,,,JOINT-POLICY,condition_name,,,,,,,,,,112
+MAP_112,,,SINGLE-LIFE-POLICY,condition_name,,,,,,,,,,113
+MAP_113,,Initialize,JOINT-PLAN-TYPE-CODE,conditional_derived,1,CHAR,0,N,N,right_space,,,,114
+MAP_114,,,INSURED-DATA,GROUP_OR_PARENT,,,,N,N,,,,,115
+MAP_115,,Group variable,NAME,GROUP_OR_PARENT,,,,N,N,,,,,116
+MAP_116,ROL,"ROL_PERSON_CODE = I or 1 or C and ROL_PERSON_TYPE = I
+MOVE ADD_LAST_NAME",LAST-NAME,direct_copy,35,CHAR,0,N,N,right_space,,,,117
+MAP_117,ROL,"ROL_PERSON_CODE = I or 1 or C and ROL_PERSON_TYPE = I
+MOVE ADD_FIRST_NAME",FIRST-NAME,direct_copy,25,CHAR,0,N,N,right_space,,,,118
+MAP_118,ROL,"ROL_PERSON_CODE = I or 1 or C and ROL_PERSON_TYPE = I
+MOVE ADD_NAME_PREFIX",PREFIX,direct_copy,10,CHAR,0,N,N,right_space,,,,119
+MAP_119,ROL,"ROL_PERSON_CODE = I or 1 or C
+MOVE ADD_NAME_SUFFIX",SUFFIX,direct_copy,10,CHAR,0,N,N,right_space,,,,120
+MAP_120,ROL,"ROL_PERSON_CODE = I or 1 or C and ROL_PERSON_TYPE = I
+MOVE ROL_BIRTH_DATE",BIRTHDATE,GROUP_OR_PARENT,,,,N,N,,,,,121
+MAP_121,ROL,"ROL_PERSON_CODE = I or 1 or C and ROL_PERSON_TYPE = I
+MOVE ROL_BIRTH_DATE",BIRTH-YY,date_split_year,4,NUMERIC,0,N,N,left_zero,,,,122
+MAP_122,ROL,"ROL_PERSON_CODE = I or 1 or C and ROL_PERSON_TYPE = I
+MOVE ROL_BIRTH_DATE",BIRTH-MM,date_split_month,2,NUMERIC,0,N,N,left_zero,,,,123
+MAP_123,ROL,"ROL_PERSON_CODE = I or 1 or C and ROL_PERSON_TYPE = I
+MOVE ROL_BIRTH_DATE",BIRTH-DD,date_split_day,2,NUMERIC,0,N,N,left_zero,,,,124
+MAP_124,ROL,"ROL_PERSON_CODE = I or 1 or C  and ROL_PERSON_TYPE = I
+MOVE ROL_SEX",SEX-CODE,direct_copy,1,CHAR,0,N,N,right_space,,,,125
+MAP_125,,,SOC-SEC-NUMBER,GROUP_OR_PARENT,,,,N,N,,,,,126
+MAP_126,ROL,"ROL_PERSON_CODE = I or 1 or C and ROL_PERSON_TYPE = I
+MOVE ROL_TIN",SOC-SEC-NO,direct_copy,15,CHAR,0,N,N,right_space,,,,127
+MAP_127,,,SOC-SEC-SUFFIX,conditional_derived,1,CHAR,0,N,N,right_space,,,,128
+MAP_128,ROL,"ROL_PERSON_CODE = I or 1 or C  and ROL_PERSON_TYPE = I
+Move ADD_ADDRESS_1",ADDRESS-1,direct_copy,35,CHAR,0,N,N,right_space,,,,129
+MAP_129,,,ZIP-POSTAL-CODE,GROUP_OR_PARENT,,,,N,N,,,,,130
+MAP_130,ADD,"ADD_POSTAL_CODE
+Note:  zip 5 and zip 4 comes from one staging template field ADD_POSTALCODE which is 10 characters- just use different parts of it",ZIP-POSTAL-CODE-5,zip_first5,05,CHAR,0,N,N,right_space,,,,131
+MAP_131,ADD,"ADD_POSTAL_CODE
+Note:  zip 5 and zip 4 comes from one staging template field ADD_POSTALCODE which is 10 characters- just use different parts of it",ZIP-POSTAL-CODE-4,zip_plus4,04,CHAR,0,N,N,right_space,,,,132
+MAP_132,,,ZIP-POSTAL-CODE-6,conditional_derived,06,CHAR,0,N,N,right_space,,,,133
+MAP_133,CNT,CNT_ISSUE_COUNTRY,COUNTRY-CODE,direct_copy,2,CHAR,0,N,N,right_space,,,,134
+MAP_134,ADD,ADD_CITY,CITY-STATE,GROUP_OR_PARENT,,,,N,N,,,,,135
+MAP_135,ROL,"ROL_PERSON_CODE = I or 1 or C  and ROL_PERSON_TYPE = I
+Move ADD_ADDRESS_2",ADDRESS-LINE-2,direct_copy,35,CHAR,0,N,N,right_space,,,,136
+MAP_136,ROL,"ROL_PERSON_CODE = I or 1 or C  and ROL_PERSON_TYPE = I
+Move ADD_ADDRESS_3",ADDRESS-LINE-3,direct_copy,35,CHAR,0,N,N,right_space,,,,137
+MAP_137,ROL,"ROL_PERSON_CODE = I or 1 or C  and ROL_PERSON_TYPE = I
+Move ADD_ADDRESS_4",ADDRESS-LINE-4,direct_copy,35,CHAR,0,N,N,right_space,,,,138
+MAP_138,ROL,"ROL_PERSON_CODE = I or 1 or C  and ROL_PERSON_TYPE = I
+Move ADD_CITY",CITY,direct_copy,30,CHAR,0,N,N,right_space,,,,139
+MAP_139,ROL,"ROL_PERSON_CODE = I or 1 or C  and ROL_PERSON_TYPE = I
+Move ADD_STATE",STATE,direct_copy,03,CHAR,0,N,N,right_space,,,,140
+MAP_140,,,FILLER,conditional_derived,2,CHAR,0,N,N,right_space,,,,141
+MAP_141,,,ADDRESS-LINE-AREA REDEFINES CITY-STATE,GROUP_OR_PARENT,,,,N,N,,,,,142
+MAP_143,,,ADDRESS-LINE,conditional_derived,35,CHAR,0,N,N,right_space,,,,144
+MAP_144,,,HANDLING-CODE,conditional_derived,1,CHAR,0,N,N,right_space,,,,145
+MAP_145,,,SPECIAL-CONDITION-1,conditional_derived,1,CHAR,0,N,N,right_space,,,,146
+MAP_146,,,SPECIAL-CONDITION-2,conditional_derived,1,CHAR,0,N,N,right_space,,,,147
+MAP_147,,"If CNT_ISSUE_COUNTRY
+'US', Move 'A'
+'CA', Move 'E'
+
+Note:  this was corrected.",CITIZENSHIP-STATUS,conditional_derived,1,CHAR,0,N,N,right_space,,,,148
+MAP_148,,"If  CNT_ISSUE_COUNTRY equals:
+ 'US' Move US; 
+ 'CA' Move CN
+
+Note:  this was corrected.",CITIZENSHIP-COUNTRY,conditional_derived,2,CHAR,0,N,N,right_space,,,,149
+MAP_149,,Y,SOC-SEC-VERIFICATION-IND,conditional_derived,1,CHAR,0,N,N,right_space,,,,150
+MAP_150,,,VALID-SOC-SEC-VERIFY,condition_name,,,,,,,,,,151
+MAP_152,,,SOC-SEC-IS-VERIFIED-VALUES,condition_name,,,,,,,,,,153
+MAP_154,,,WITHHOLDING-REQUIRED,condition_name,,,,,,,,,,155
+MAP_156,,,NO-CERT-WITH-REQ,condition_name,,,,,,,,,,157
+MAP_157,,,NO-CERT-WITH-BLANK-SSN,condition_name,,,,,,,,,,158
+MAP_158,,,NO-CERT-WITH-REQ,condition_name,,,,,,,,,,159
+MAP_159,,,CERT-NO-WITH,condition_name,,,,,,,,,,160
+MAP_160,,,CERT-WITH-REQ,condition_name,,,,,,,,,,161
+MAP_161,,,CERT-WITH-REQ-IRS-NOTIF,condition_name,,,,,,,,,,162
+MAP_162,,,CERT-WITH-REQ-2-IN-3,condition_name,,,,,,,,,,163
+MAP_163,,,VERIFIED-NO-WITH,condition_name,,,,,,,,,,164
+MAP_164,,,NOT-VERIFIED-WITH-R,condition_name,,,,,,,,,,165
+MAP_165,ROL,ROL_LANGUAGE_CODE,LANGUAGE-CODE,direct_copy,1,CHAR,0,N,N,right_space,,,,166
+MAP_166,ROL,"ROL_PERSON_CODE = I or 1 or C and 
+ROL_PERSON_TYPE eq 'I'  - Move 'I', 
+                                      eq 'C' or 'T'- Move 'C'
+                                      else Move 'I'",CASE-INDIV-CODE,direct_copy,1,CHAR,0,N,N,right_space,,,,167
+MAP_167,,'2',NFO-MAIL-CODE-ORIG,conditional_derived,1,CHAR,0,N,N,right_space,,,,168
+MAP_168,,'2',NFO-MAIL-CODE-DUP,conditional_derived,1,CHAR,0,N,N,right_space,,,,169
+MAP_169,,'2',ORIG-OTHER-MAIL-CODE,conditional_derived,1,CHAR,0,N,N,right_space,,,,170
+MAP_170,,,DUP-OTHER-MAIL-CODE,conditional_derived,1,CHAR,0,N,N,right_space,,,,171
+MAP_171,,"If CVG_DIVIDEND_OPTION_1 
+= '1' Move '2'
+Else, Initialize.",DIVIDEND-PAYEE-MAIL-CODE,conditional_derived,1,CHAR,0,N,N,right_space,,,,172
+MAP_172,,,VALID-DIV-MAIL-CODE,condition_name,,,,,,,,,,173
+MAP_173,,"If CNT_SEX_CODE EQUALS '3' 'B' 'J' move 'U' else, move spaces",SEX-OVERRIDE,conditional_derived,1,CHAR,0,N,N,right_space,,,,174
+MAP_174,,,MALE-FEM-COMBO,condition_name,,,,,,,,,,175
+MAP_175,,,BOTH-INS-MALE,condition_name,,,,,,,,,,176
+MAP_176,,,BOTH-INS-FEM,condition_name,,,,,,,,,,177
+MAP_177,,,JOINT-UNISEX,condition_name,,,,,,,,,,178
+MAP_178,,,SINGLE-UNISEX,condition_name,,,,,,,,,,179
+MAP_179,,,SINGLE-NON-UNISEX,condition_name,,,,,,,,,,180
+MAP_180,,'2',TAXABLE-TO-MAIL-CODE,conditional_derived,1,CHAR,0,N,N,right_space,,,,181
+MAP_181,,,FILLER,conditional_derived,98,CHAR,0,N,N,right_space,,,,182
+MAP_183,,,SPECIAL-CONDITIONS,GROUP_OR_PARENT,,,,N,N,,,,,184
+MAP_184,,,SPECIAL-CONDITION-1,conditional_derived,1,CHAR,0,N,N,right_space,,,,185
+MAP_185,,,SPECIAL-CONDITION-2,conditional_derived,1,CHAR,0,N,N,right_space,,,,186
+MAP_186,,,LATE-PAYMENT-OFFER-IND,conditional_derived,1,CHAR,0,N,N,right_space,,,,187
+MAP_187,,"If CNT_POLICY_CODE  equals 5 or M, 
+or PRM_BILLING_FORM eq '4', 
+Move B.  
+Else, Initialize.",SUSPEND-CODE,conditional_derived,1,CHAR,0,N,N,right_space,,,,188
+MAP_188,CNT,CNT_POLICY_CODE,POL-LVL-HANDLING-CODE,direct_copy,1,CHAR,0,N,N,right_space,,,,189
+MAP_189,,"If PRM_BILLING_FORM eq '2',
+and If PRM_GROUP_NUMBER ne blanks,  Move DTL-GROUP-NUMBER,
+Else, move '9's'.",CLIENT-NUMBER,conditional_derived,15,CHAR,0,N,N,right_space,,,,190
+MAP_190,,,SUPERIOR-NUMBER,conditional_derived,15,CHAR,0,N,N,right_space,,,,191
+MAP_191,,,CLIENT-RELATIONSHIP,conditional_derived,1,CHAR,0,N,N,right_space,,,,192
+MAP_192,,,RESTRICTION-CODE,conditional_derived,1,CHAR,0,N,N,right_space,,,,193
+MAP_193,,,NBU-RESTRICTED,condition_name,,,,,,,,,,194
+MAP_194,,,POLICY-CONTRACT-FORM,conditional_derived,1,CHAR,0,N,N,right_space,,,,195
+MAP_195,,'I',OWNERSHIP-CODE,conditional_derived,1,CHAR,0,N,N,right_space,,,,196
+MAP_196,,,INSURED-OWNER,condition_name,,,,,,,,,,197
+MAP_197,,,NON-CURRENT-LIMIT-DATE,GROUP_OR_PARENT,,,,N,N,,,,,198
+MAP_198,,,NON-CURRENT-LIMIT-YY,conditional_derived,4,NUMERIC,0,N,N,left_zero,,,,199
+MAP_199,,,NON-CURRENT-LIMIT-MM,conditional_derived,2,NUMERIC,0,N,N,left_zero,,,,200
+MAP_200,,,NON-CURRENT-LIMIT-DD,conditional_derived,2,NUMERIC,0,N,N,left_zero,,,,201
+MAP_201,,,MARKETING-GROUP-CODE,conditional_derived,4,CHAR,0,N,N,right_space,,,,202
+MAP_202,,,ADMIN-CODE,conditional_derived,2,CHAR,0,N,N,right_space,,,,203
+MAP_203,,,MANAGEMENT-CODE,conditional_derived,2,CHAR,0,N,N,right_space,,,,204
+MAP_204,,,PLACEMENT-PER-EXPIRE-DATE,GROUP_OR_PARENT,,,,N,N,,,,,205
+MAP_205,,,PLACEMENT-PER-EXPIRE-YY,conditional_derived,4,NUMERIC,0,N,N,left_zero,,,,206
+MAP_206,,,PLACEMENT-PER-EXPIRE-MM,conditional_derived,2,NUMERIC,0,N,N,left_zero,,,,207
+MAP_207,,,PLACEMENT-PER-EXPIRE-DD,conditional_derived,2,NUMERIC,0,N,N,left_zero,,,,208
+MAP_208,,,SEQUENCE-CODE,conditional_derived,15,CHAR,0,N,N,right_space,,,,209
+MAP_209,,,ADDITIONAL-POLICY-IND,conditional_derived,1,CHAR,0,N,N,right_space,,,,210
+MAP_210,,,APPLICATION-NUMBER,conditional_derived,15,CHAR,0,N,N,right_space,,,,211
+MAP_211,,,ALTERNATE-POLICY-IND,conditional_derived,1,CHAR,0,N,N,right_space,,,,212
+MAP_212,,,AMEND-FORM-EXCL-IND,conditional_derived,1,CHAR,0,N,N,right_space,,,,213
+MAP_213,,,COMMISSION-CLASS-CODE,conditional_derived,2,CHAR,0,N,N,right_space,,,,214
+MAP_214,,,ADDITIONAL-NI-RIDER-B-IND,conditional_derived,2,NUMERIC,0,N,N,left_zero,,,,215
+MAP_215,,Initialize,FAMILY-NI-RIDER-B-IND,conditional_derived,1,CHAR,0,N,N,right_space,,,,216
+MAP_216,,Initialize,CHILD-NI-RIDER-B-IND,conditional_derived,1,CHAR,0,N,N,right_space,,,,217
+MAP_217,,Initialize,ADB-RIDER-B-IND,conditional_derived,1,CHAR,0,N,N,right_space,,,,218
+MAP_218,,,POL-COMP-PEND-ADB-ADD,condition_name,,,,,,,,,,219
+MAP_219,,,NO-POL-COMP-PEND-ADB-ADD,condition_name,,,,,,,,,,220
+MAP_220,,Initialize,GPO-RIDER-B-IND,conditional_derived,1,CHAR,0,N,N,right_space,,,,221
+MAP_221,,,POL-COMP-PEND-GPO-ADD,condition_name,,,,,,,,,,222
+MAP_222,,,NO-POL-COMP-PEND-GPO-ADD,condition_name,,,,,,,,,,223
+MAP_223,,Initialize,ABR-RIDER-B-IND,conditional_derived,2,NUMERIC,0,N,N,left_zero,,,,224
+MAP_224,,Initialize,PUAR-RIDER-B-IND,conditional_derived,2,NUMERIC,0,N,N,left_zero,,,,225
+MAP_225,,Initialize,PCR-RIDER-B-IND,conditional_derived,2,NUMERIC,0,N,N,left_zero,,,,226
+MAP_226,,Initialize,SPLIT-RIDER-B-IND,conditional_derived,2,NUMERIC,0,N,N,left_zero,,,,227
+MAP_227,,Initialize,FLEX-RIDER-B-IND,conditional_derived,2,NUMERIC,0,N,N,left_zero,,,,228
+MAP_228,,Initialize,TERM-RIDER-B-IND,conditional_derived,2,NUMERIC,0,N,N,left_zero,,,,229
+MAP_229,,Initialize to 0,BASE-COVERAGE-COUNT,conditional_derived,2,NUMERIC,0,N,N,left_zero,,,,230
+MAP_230,,'N',ROP-RIDER-B-IND,conditional_derived,1,CHAR,0,N,N,right_space,,,,231
+MAP_231,,,POL-COMP-PEND-ROP-ADD,condition_name,,,,,,,,,,232
+MAP_232,,,NO-POL-COMP-PEND-ROP-ADD,condition_name,,,,,,,,,,233
+MAP_233,,,FILLER,conditional_derived,1,CHAR,0,N,N,right_space,,,,234
+MAP_234,CNT,"CNT_SERV_AGENCY       
+
+Be careful - going from 12 char field (which should be right-padded with blanks) to 6 char field.  This means some right-side truncation may occur for non-blank chars.",SERVICING-AGENCY-CODE,conditional_derived,6,CHAR,0,N,N,right_space,,,,235
+MAP_235,CNT,"CNT_SERV_AGENT        
+
+Be careful - going from 12 char field (which should be right-padded with blanks) to 10 char field.  This means some right-side truncation may occur for non-blank chars.",SERVICING-AGENT-CODE,conditional_derived,10,CHAR,0,N,N,right_space,,,,236
+MAP_236,,,SERVICING-AGENT-CONTR-CODE,conditional_derived,5,CHAR,0,N,N,right_space,,,,237
+MAP_237,,Initialize,PW-COVERED-INSURED-IND,conditional_derived,2,CHAR,0,N,N,right_space,,,,238
+MAP_238,,,PRIMARY-INSURED,condition_name,,,,,,,,,,239
+MAP_239,,,PAYOR-INSURED,condition_name,,,,,,,,,,240
+MAP_240,,Initialize,PW-PLAN-CODE,conditional_derived,6,CHAR,0,N,N,right_space,,,,241
+MAP_241,,,PW-RATING-INFO,GROUP_OR_PARENT,,,,N,N,,,,,242
+MAP_242,,0,PW-RATING-FACTOR,conditional_derived,5,PACKED_DECIMAL,3,Y,Y,left_zero,,,,243
+MAP_243,,,PW-RATING-REASON,conditional_derived,2,CHAR,0,N,N,right_space,,,,244
+MAP_244,,Initialize,PW-RATING-END-DATE,GROUP_OR_PARENT,,,,N,N,,,,,245
+MAP_245,,,PW-RATING-END-YY,conditional_derived,4,NUMERIC,0,N,N,left_zero,,,,246
+MAP_246,,,PW-RATING-END-MM,conditional_derived,2,NUMERIC,0,N,N,left_zero,,,,247
+MAP_247,,,PW-RATING-END-DD,conditional_derived,2,NUMERIC,0,N,N,left_zero,,,,248
+MAP_248,,,PW-OVERRIDE,conditional_derived,8,PACKED_DECIMAL,2,Y,Y,left_zero,,,,249
+MAP_249,,Initialize,PW-OVERRIDE-END-DATE,GROUP_OR_PARENT,,,,N,N,,,,,250
+MAP_251,,,PW-OVR-END-YY,conditional_derived,4,NUMERIC,0,N,N,left_zero,,,,252
+MAP_252,,,PW-OVR-END-MM,conditional_derived,2,NUMERIC,0,N,N,left_zero,,,,253
+MAP_253,,,PW-OVR-END-DD,conditional_derived,2,NUMERIC,0,N,N,left_zero,,,,254
+MAP_254,,,MEC-INFO,GROUP_OR_PARENT,,,,N,N,,,,,255
+MAP_255,,TAX_MEC_INDICATOR,MEC-INDICATOR,conditional_derived,1,CHAR,0,N,N,right_space,,,,256
+MAP_256,,,MEC-DATE,GROUP_OR_PARENT,,,,N,N,,,,,257
+MAP_257,,,MEC-YY,conditional_derived,4,NUMERIC,0,N,N,left_zero,,,,258
+MAP_258,,,MEC-MM,conditional_derived,2,NUMERIC,0,N,N,left_zero,,,,259
+MAP_259,,,MEC-DD,conditional_derived,2,NUMERIC,0,N,N,left_zero,,,,260
+MAP_260,,'N',TAX-PENALTY-IND,conditional_derived,1,CHAR,0,N,N,right_space,,,,261
+MAP_261,,,TAMRA-TEST-INDICATOR,conditional_derived,1,CHAR,0,N,N,right_space,,,,262
+MAP_262,,,REJECT-PREMIUM-IND,conditional_derived,1,CHAR,0,N,N,right_space,,,,263
+MAP_263,,,7-PAY-PREM-ADJUSTMENT-AMT,conditional_derived,11,PACKED_DECIMAL,2,Y,Y,left_zero,,,,264
+MAP_264,,,LOW-DB-IND,conditional_derived,1,CHAR,0,N,N,right_space,,,,265
+MAP_265,,,FILLER,conditional_derived,90,CHAR,0,N,N,right_space,,,,266
+MAP_266,,,ADDL-POLICY-NUMBER                              TRAD010,conditional_derived,15,CHAR,0,N,N,right_space,,,,267
+MAP_267,,,ALT-POLICY-NUMBER                                 TRAD010,conditional_derived,15,CHAR,0,N,N,right_space,,,,268
+MAP_268,CNT,CNT_ISSUE_DATE,ORIG-ISSUE-DATE.                                        TRAD010,GROUP_OR_PARENT,,,,N,N,,,,,269
+MAP_269,,,ORIG-ISSUE-YY                                              TRAD010,conditional_derived,4,NUMERIC,0,N,N,left_zero,,,,270
+MAP_270,,,ORIG-ISSUE-MM                                             TRAD010,conditional_derived,2,NUMERIC,0,N,N,left_zero,,,,271
+MAP_271,,,ORIG-ISSUE-DD                                             TRAD010,conditional_derived,2,NUMERIC,0,N,N,left_zero,,,,272
+MAP_272,,,TOTAL-NUM-CO-OWNERS                        TRAD010,conditional_derived,2,NUMERIC,0,N,N,left_zero,,,,273
+MAP_273,,,ANTIC-1035-EXCHANGE-AMT                  TRAD010,conditional_derived,11,PACKED_DECIMAL,2,Y,Y,left_zero,,,,274
+MAP_274,,'00',FRANCHISE-TYPE                                        TRAD010,conditional_derived,2,CHAR,0,N,N,right_space,,,,275
+MAP_275,,,FREE-LOOK-PERIOD                                TRAD010,conditional_derived,3,BINARY,0,Y,N,left_zero,,,,276
+MAP_276,,,PART-2-DATE.                                              TRAD010,GROUP_OR_PARENT,,,,N,N,,,,,277
+MAP_277,,,PART-2-YY                                                  TRAD010,conditional_derived,4,NUMERIC,0,N,N,left_zero,,,,278
+MAP_278,,,PART-2-MM                                              TRAD010,conditional_derived,2,NUMERIC,0,N,N,left_zero,,,,279
+MAP_279,,,PART-2-DD                                         TRAD010,conditional_derived,2,NUMERIC,0,N,N,left_zero,,,,280
+MAP_280,,"if CNT_REINS_TYPE = blank, move '00',
+Else, move '01'.",POLICY-REINSURED-IND                 TRAD010,conditional_derived,2,CHAR,0,N,N,right_space,,,,281
+MAP_281,,spaces,PURPOSE-OF-INS                                TRAD010,conditional_derived,10,CHAR,0,N,N,right_space,,,,282
+MAP_282,,N,COM-IND                                              TRAD010,conditional_derived,1,CHAR,0,N,N,right_space,,,,283
+MAP_283,,,AVIATION-EXCL-FORM-NUM                    TRAD010,conditional_derived,3,CHAR,0,N,N,right_space,,,,284
+MAP_284,,,REGION-ID-RESP-FOR-ISSUE                       TRAD010,conditional_derived,2,CHAR,0,N,N,right_space,,,,285
+MAP_285,,N,AVOCATION-EXCL-FORM                                 TRAD010,conditional_derived,1,CHAR,0,N,N,right_space,,,,286
+MAP_286,,,CONVERTED-POLICY-INFO OCCURS 5.          TRAD010,GROUP_OR_PARENT,,,,N,N,,,,,287
+MAP_287,,,CONV-POLICY-NUM                                       TRAD010,conditional_derived,15,CHAR,0,N,N,right_space,,,,288
+MAP_288,,,CONV-POLICY-ISSUE-AGE                         TRAD010,conditional_derived,3,BINARY,0,Y,N,left_zero,,,,289
+MAP_289,,,CONV-POLICY-FACE-AMT                          TRAD010,conditional_derived,11,PACKED_DECIMAL,2,Y,Y,left_zero,,,,290
+MAP_290,,,ANTICIPATED-SCHED-PUAR-INFO.              TRAD010,GROUP_OR_PARENT,,,,N,N,,,,,291
+MAP_291,,,AS-PUAR-1035-PREM                                    TRAD010,conditional_derived,11,PACKED_DECIMAL,2,Y,Y,left_zero,,,,292
+MAP_292,,,AS-BKDT-NON-1035-PUAR-PREM             TRAD010,conditional_derived,11,PACKED_DECIMAL,2,Y,Y,left_zero,,,,293
+MAP_293,,,AS-PUAR-PREM-CLASS                                  TRAD010,conditional_derived,1,CHAR,0,N,N,right_space,,,,294
+MAP_294,,,AS-PUAR-TBL-RATING                                    TRAD010,conditional_derived,3,CHAR,0,N,N,right_space,,,,295
+MAP_295,,,AS-PUAR-TBL-RATING-YRS                          TRAD010,conditional_derived,3,BINARY,0,Y,N,left_zero,,,,296
+MAP_296,,,AS-PUAR-REPL-TYPE-CODE                       TRAD010,conditional_derived,1,CHAR,0,N,N,right_space,,,,297
+MAP_297,,,AS-PUAR-REPL-FACE-AMT                        TRAD010,conditional_derived,11,PACKED_DECIMAL,2,Y,Y,left_zero,,,,298
+MAP_298,,,ANTICIPATED-UNSCHED-PUAR-INFO.    TRAD010,GROUP_OR_PARENT,,,,N,N,,,,,299
+MAP_299,,,AU-1035-PUAR-PREM                                TRAD010,conditional_derived,11,PACKED_DECIMAL,2,Y,Y,left_zero,,,,300
+MAP_300,,,AU-1035-PUAR-PREM-CLASS                   TRAD010,conditional_derived,1,CHAR,0,N,N,right_space,,,,301
+MAP_301,,,AU-1035-PUAR-TBL-RATING                    TRAD010,conditional_derived,3,CHAR,0,N,N,right_space,,,,302
+MAP_302,,,AU-PUAR-REPL-TYPE-CODE                  TRAD010,conditional_derived,1,CHAR,0,N,N,right_space,,,,303
+MAP_303,,,AU-PUAR-REPL-FACE-AMT                     TRAD010,conditional_derived,11,PACKED_DECIMAL,2,Y,Y,left_zero,,,,304
+MAP_304,,,REPLACEMENT-TYPE-CODE               TRAD010,conditional_derived,1,CHAR,0,N,N,right_space,,,,305
+MAP_305,,,FACE-AMT-FOR-INTERNAL-REPL              TRAD010,conditional_derived,11,PACKED_DECIMAL,2,Y,Y,left_zero,,,,306
+MAP_306,,'Y',LOAN-CONFIRM-IND                                  TRAD025,conditional_derived,1,CHAR,0,N,N,right_space,,,,307
+MAP_307,,,PRODUCE-LOAN-CONFIRM,condition_name,,,,,,,,,,308
+MAP_308,,2,CONFIRM-MAIL-CODE-ORIG                       TRAD025,conditional_derived,1,CHAR,0,N,N,right_space,,,,309
+MAP_309,,spaces,CONFIRM-MAIL-CODE-DUP                         TRAD025,conditional_derived,1,CHAR,0,N,N,right_space,,,,310
+MAP_311,,,PAYMENT-METHOD,conditional_derived,1,CHAR,0,N,N,right_space,,,,312
+MAP_312,CNT,"CNT_POLICY_STATUS eq 04 - Move 'I'
+PRM_BILLING_FORM eq 1,R,V - Move 'I'
+eq 2,5,6 -Move G
+eq 3,4 -Move P
+eq N - Move N
+
+
+Note:  Slight correction above.",BILL-OPTION-CODE,direct_copy,1,CHAR,0,N,N,right_space,,,,313
+MAP_313,,,LIST-BILL,condition_name,,,,,,,,,,314
+MAP_314,,,NO-BILLING,condition_name,,,,,,,,,,315
+MAP_315,,,BILLING-REQUIRED,condition_name,,,,,,,,,,316
+MAP_316,CNT,"CNT_POLICY_STATUS = '97' and 
+PRM_MODE eq M - Move 12, 
+eq Q - Move 04
+eq S - Move 02
+eq A - Move 01
+eq N - Move 00
+Else.
+if PRM_MODE eq M - Move 12
+eq Q - Move 04
+eq S - Move 02
+eq A - Move 01
+eq N - Move 00.
+
+PRM_BILLING_FORM eq V or CNT_POLICY_STATUS = '97' - Move 01
+
+Note:  Corrections above.",BILLING-FREQUENCY,direct_copy,2,NUMERIC,0,N,N,left_zero,,,,317
+MAP_317,,"If CNT_PRODUCT_TYPE is H-> 
+    MOVE PRM_MODE_PREMIUM    
+else move zero",MODAL-PREM-OVERRIDE,conditional_derived,11,PACKED_DECIMAL,2,Y,Y,left_zero,,,,318
+MAP_318,,PRM_BILLED_TO_DATE,BILL-EXTRACT-DATE,GROUP_OR_PARENT,,,,N,N,,,,,319
+MAP_319,,PRM_BILLED_TO_DATE,BILL-EXTRACT-YY,date_split_year,4,NUMERIC,0,N,N,left_zero,,,,320
+MAP_320,,PRM_BILLED_TO_DATE,BILL-EXTRACT-MM,date_split_month,2,NUMERIC,0,N,N,left_zero,,,,321
+MAP_321,,PRM_BILLED_TO_DATE,BILL-EXTRACT-DD,date_split_day,2,NUMERIC,0,N,N,left_zero,,,,322
+MAP_322,,"PRM_PREMIUM_FORCED eq Y -> Move PRM_PREMIUM_PER_UNIT, 
+else move zero
+CNT_PRODUCT_TYPE is H -> Move zero",APU-OVERRIDE,conditional_derived,8,PACKED_DECIMAL,2,Y,Y,left_zero,,,,323
+MAP_323,,"PRM_PREMIUM_FORCED eq Y -> Move '99999999',
+Else move Spaces
+CNT_PRODUCT_TYPE is H -> Move spaces",APU-OVERRIDE-END-DATE,GROUP_OR_PARENT,,,,N,N,,,,,324
+MAP_325,,"PRM_PREMIUM_FORCED eq Y -> Move '99999999',
+Else move Spaces
+CNT_PRODUCT_TYPE is H -> Move spaces",APU-OVR-END-YY,conditional_derived,4,NUMERIC,0,N,N,left_zero,,,,326
+MAP_326,,"PRM_PREMIUM_FORCED eq Y -> Move '99999999',
+Else move Spaces
+CNT_PRODUCT_TYPE is H -> Move spaces",APU-OVR-END-MM,conditional_derived,2,NUMERIC,0,N,N,left_zero,,,,327
+MAP_327,,"PRM_PREMIUM_FORCED eq Y -> Move '99999999',
+Else move Spaces
+CNT_PRODUCT_TYPE is H -> Move spaces",APU-OVR-END-DD,conditional_derived,2,NUMERIC,0,N,N,left_zero,,,,328
+MAP_328,,,EMPLOYEE-NUMBER,conditional_derived,11,CHAR,0,N,N,right_space,,,,329
+MAP_329,,,INITIAL-BILL-IND,conditional_derived,1,CHAR,0,N,N,right_space,,,,330
+MAP_330,,,INITIAL-BILL-DATE,GROUP_OR_PARENT,,,,N,N,,,,,331
+MAP_331,,,INITIAL-BILL-YY,conditional_derived,4,NUMERIC,0,N,N,left_zero,,,,332
+MAP_332,,,INITIAL-BILL-MM,conditional_derived,2,NUMERIC,0,N,N,left_zero,,,,333
+MAP_333,,,INITIAL-BILL-DD,conditional_derived,2,NUMERIC,0,N,N,left_zero,,,,334
+MAP_334,,,CASH-WITH-APP-CODE,conditional_derived,1,CHAR,0,N,N,right_space,,,,335
+MAP_335,,"PRM_PAC_IND not spaces and BNK_PAC_ACCOUNT_TYPE eq 27 - Move C
+eq 37 - Move S",PAC-TYPE,conditional_derived,1,CHAR,0,N,N,right_space,,,,336
+MAP_336,,,PAC-NUMBER,conditional_derived,7,CHAR,0,N,N,right_space,,,,337
+MAP_337,,"If PRM_BILLING_FORM 
+EQ 2 or 6, AND If GBL_GROUP_NUMBER NE 'blanks', and ROL_PERSON_CODE = 'O' and ROL_PERSON_TYPE = 'C', Move ""C"".
+Else, Move ""S"".",LOAN-INT-BILL-CODE,conditional_derived,1,CHAR,0,N,N,right_space,,,,338
+MAP_338,,,LOAN-INT-BILL-MAIL-CODES-LIST,GROUP_OR_PARENT,,,,N,N,,,,,339
+MAP_339,,"If PRM_BILLING_FORM 
+EQ 1, 3 ,4 or V, Move ""1"".
+EQ 2 or 6, AND If PRM_GROUP_NUMBER EQ 'blanks', Move ""1"",
+EQ 2 or 6, AND If PRM_GROUP_NUMBER NE 'blanks', and ROL_PERSON_CODE = 'O' and ROL_PERSON_TYPE = 'C', 
+Move ""blank"".
+Else, Move ""2"".",LOAN-INT-BILL-MAIL-CODE-ORIG,conditional_derived,1,CHAR,0,N,N,right_space,,,,340
+MAP_340,,,LOAN-INT-BILL-MAIL-CODE-DUP,conditional_derived,1,CHAR,0,N,N,right_space,,,,341
+MAP_341,,,LOAN-INT-BILL-MAIL-CODES-TABLE REDEFINES LOAN-INT-BILL-MAIL-CODES-LIST,GROUP_OR_PARENT,,,,N,N,,,,,342
+MAP_342,,,LOAN-INT-BILL-MAIL-CODES   OCCURS 2 TIMES,GROUP_OR_PARENT,,,,N,N,,,,,343
+MAP_343,,,LOAN-INT-BILL-MAIL-CODE,conditional_derived,1,CHAR,0,N,N,right_space,,,,344
+MAP_344,,"If PRM_BILLING_FORM eq '2' or '6' and If PRM_GROUP_NUMBER ne blanks,  Move PRM_GROUP_NUMBER 
+Else, Initialize.",BILLING-CLIENT-NUMBER,conditional_derived,15,CHAR,0,N,N,right_space,,,,345
+MAP_345,,,BILL-MAIL-CODES-LIST,GROUP_OR_PARENT,,,,N,N,,,,,346
+MAP_346,,"If PRM_BILLING_FORM 
+EQ 1, 3, 4 or V, Move ""1"".
+EQ 2 or 6, and If PRM_GROUP_NUMBER NE 'blanks',  Move ""blank"".
+EQ 2 or 6, and If PRM_GROUP_NUMBER EQ 'blanks',  Move ""1"".",BILL-MAIL-CODE-ORIG,conditional_derived,1,CHAR,0,N,N,right_space,,,,347
+MAP_347,,,BILL-MAIL-CODE-DUP,conditional_derived,1,CHAR,0,N,N,right_space,,,,348
+MAP_348,,,BILL-MAIL-CODES-TABLE REDEFINES BILL-MAIL-CODES-LIST,GROUP_OR_PARENT,,,,N,N,,,,,349
+MAP_349,,,BILL-MAIL-CODES OCCURS 2 TIMES,GROUP_OR_PARENT,,,,N,N,,,,,350
+MAP_350,,,BILL-MAIL-CODE,conditional_derived,1,CHAR,0,N,N,right_space,,,,351
+MAP_351,,BNK_ACCOUNT_NUMBER,BANK-CHECK-ID,conditional_derived,50,CHAR,0,N,N,right_space,,,,352
+MAP_352,,Commented in module,MOD-PREM-CALC-SEL-NO,conditional_derived,3,CHAR,0,N,N,right_space,,,,353
+MAP_353,,Commented in module,POLICY-FEE-SELECT-NO,conditional_derived,3,CHAR,0,N,N,right_space,,,,354
+MAP_354,,,LOAN-INTEREST-SELECT,conditional_derived,3,CHAR,0,N,N,right_space,,,,355
+MAP_355,,PRM_BILLING_FORM is V -> MOVE 'F',VP-PROCESS-TYPE,conditional_derived,1,CHAR,0,N,N,right_space,,,,356
+MAP_356,,"99999999 TO VP-EFFECTIVE-DATE 
+
+Note:  Correction to above.  The 2015 coding is not applicable.",VP-EFFECTIVE-DATE,GROUP_OR_PARENT,,,,N,N,,,,,357
+MAP_357,,,VP-EFFECTIVE-YY,conditional_derived,4,NUMERIC,0,N,N,left_zero,,,,358
+MAP_358,,,VP-EFFECTIVE-MM,conditional_derived,2,NUMERIC,0,N,N,left_zero,,,,359
+MAP_359,,,VP-EFFECTIVE-DD,conditional_derived,2,NUMERIC,0,N,N,left_zero,,,,360
+MAP_360,,,VP-END-DATE,GROUP_OR_PARENT,,,,N,N,,,,,361
+MAP_361,,'9999',VP-END-YY,conditional_derived,4,NUMERIC,0,N,N,left_zero,,,,362
+MAP_362,,'99',VP-END-MM,conditional_derived,2,NUMERIC,0,N,N,left_zero,,,,363
+MAP_363,,'99',VP-END-DD,conditional_derived,2,NUMERIC,0,N,N,left_zero,,,,364
+MAP_364,,,PARTIAL-VANISH-CASH-AMT,conditional_derived,11,PACKED_DECIMAL,2,Y,Y,left_zero,,,,365
+MAP_365,,IF PRM_BILLING_FORM is V  - Move 'Y',VP-BILL-CODE,conditional_derived,1,CHAR,0,N,N,right_space,,,,366
+MAP_366,,IF PRM_BILLING_FORM is V  - Move 'A',VP-PRIORITY-USAGE,conditional_derived,1,CHAR,0,N,N,right_space,,,,367
+MAP_367,,NINES,FB-EFF-DATE,GROUP_OR_PARENT,,,,N,N,,,,,368
+MAP_368,,,FB-EFFECTIVE-YY,conditional_derived,4,NUMERIC,0,N,N,left_zero,,,,369
+MAP_369,,,FB-EFFECTIVE-MM,conditional_derived,2,NUMERIC,0,N,N,left_zero,,,,370
+MAP_370,,,FB-EFFECTIVE-DD,conditional_derived,2,NUMERIC,0,N,N,left_zero,,,,371
+MAP_371,,NINES,FB-END-DATE,GROUP_OR_PARENT,,,,N,N,,,,,372
+MAP_372,,,FB-END-YY,conditional_derived,4,NUMERIC,0,N,N,left_zero,,,,373
+MAP_373,,,FB-END-MM,conditional_derived,2,NUMERIC,0,N,N,left_zero,,,,374
+MAP_374,,,FB-END-DD,conditional_derived,2,NUMERIC,0,N,N,left_zero,,,,375
+MAP_375,,,FB-SPEC-AMT,conditional_derived,9,NUMERIC,0,N,N,left_zero,,,,376
+MAP_376,,,FILLER,conditional_derived,78,CHAR,0,N,N,right_space,,,,377
+MAP_378,,,PRODUCER-INFO-AREA,GROUP_OR_PARENT,,,,N,N,,,,,379
+MAP_379,,,PRODUCER-GROUP-CODE,conditional_derived,2,CHAR,0,N,N,right_space,,,,380
+MAP_380,,"Agent info comes from occurrences of AGENT tab in Staging Template. You have to look for occurrences of AGE_ROLE_TYPE = 01 (i.e., writing agent). However, Staging Template does NOT carry info on commissions.  Just initialize below agent fields for now until tech team is ready to pull agent occurrences.",AGENT-INFORMATION OCCURS 10 TIMES,GROUP_OR_PARENT,,,,N,N,,,,,381
+MAP_381,,,ROLE-TYPE-CODE,conditional_derived,1,CHAR,0,N,N,right_space,,,,382
+MAP_382,,,WRITING-AGENT-PERCENT,conditional_derived,4,PACKED_DECIMAL,1,Y,Y,left_zero,,,,383
+MAP_383,,,RENEWAL-PERCENT,conditional_derived,4,PACKED_DECIMAL,1,Y,Y,left_zero,,,,384
+MAP_384,,,WRITING-AGENCY-CODE,conditional_derived,6,CHAR,0,N,N,right_space,,,,385
+MAP_385,,,WRITING-AGENT-PERSON-CODE,conditional_derived,10,CHAR,0,N,N,right_space,,,,386
+MAP_386,,,COMM-INFO-LINE,conditional_derived,25,CHAR,0,N,N,right_space,,,,387
+MAP_387,,,WRITING-AGENT-PROFILE,conditional_derived,3,CHAR,0,N,N,right_space,,,,388
+MAP_388,,,WRITING-AGENT-CONTRACT,conditional_derived,5,CHAR,0,N,N,right_space,,,,389
+MAP_389,,,AGENT-USER-GROUP,GROUP_OR_PARENT,,,,N,N,,,,,390
+MAP_390,,,AGENT-USER-INFOOCCURS 10 TIMES,GROUP_OR_PARENT,,,,N,N,,,,,391
+MAP_391,,,AGENT-USER-AREA,conditional_derived,30,CHAR,0,N,N,right_space,,,,392
+MAP_392,,,FILLER,conditional_derived,25,CHAR,0,N,N,right_space,,,,393
+MAP_394,,,REINSURANCE-INFORMATION,GROUP_OR_PARENT,,,,N,N,,,,,395
+MAP_395,CNT,CNT_REINS_TYPE,REINSURANCE-TYPE,direct_copy,1,CHAR,0,N,N,right_space,,,,396
+MAP_396,,,REINSURER-CODE,conditional_derived,3,CHAR,0,N,N,right_space,,,,397
+MAP_397,,,CESSION-NUMBER,conditional_derived,11,CHAR,0,N,N,right_space,,,,398
+MAP_398,,,RETENTION-AMOUNT,conditional_derived,9,BINARY,0,Y,N,left_zero,,,,399
+MAP_399,,,RETENTION-PERCENT,conditional_derived,5,PACKED_DECIMAL,1,Y,Y,left_zero,,,,400
+MAP_400,,"Technically, this is CVG_PERCENT_RATING for the ""TERM"" CVG_TYPE for insured
+
+Since everything related is commented out in rows below, just Initialize.  
+
+Note:  Be careful this is a 5 byte field w/ 3 decimals in Staging Template going into a 3 byte packed field.",RATING-FACTOR,conditional_derived,5,PACKED_DECIMAL,3,Y,Y,left_zero,,,,401
+MAP_401,,Commented in module,RATING-REASON-CODE,conditional_derived,2,CHAR,0,N,N,right_space,,,,402
+MAP_402,,Commented in module,RATING-END-DATE,GROUP_OR_PARENT,,,,N,N,,,,,403
+MAP_403,,Commented in module,RATING-END-YY,conditional_derived,4,NUMERIC,0,N,N,left_zero,,,,404
+MAP_404,,Commented in module,RATING-END-MM,conditional_derived,2,NUMERIC,0,N,N,left_zero,,,,405
+MAP_405,,Commented in module,RATING-END-DD,conditional_derived,2,NUMERIC,0,N,N,left_zero,,,,406
+MAP_406,,,RATING-FACTOR-COMM-CODE,conditional_derived,1,CHAR,0,N,N,right_space,,,,407
+MAP_407,,"Commented in module
+
+I have to idea why all these base related rating fields are commented out.  The fields exist in the Staging Template CVG tab.  Perhaps, they are added via other transactions.  So, just initialize these rating-related fields for now.",SPECIAL-CLASS-CODE,conditional_derived,2,CHAR,0,N,N,right_space,,,,408
+MAP_408,,,SPECIAL-CLASS-REASON-CODE,conditional_derived,2,CHAR,0,N,N,right_space,,,,409
+MAP_409,,Commented in module,SPECIAL-CLASS-CEASE-DATE,GROUP_OR_PARENT,,,,N,N,,,,,410
+MAP_410,,Commented in module,SPECIAL-CLASS-CEASE - YY,conditional_derived,4,NUMERIC,0,N,N,left_zero,,,,411
+MAP_411,,Commented in module,SPECIAL-CLASS-CEASE - MM,conditional_derived,2,NUMERIC,0,N,N,left_zero,,,,412
+MAP_412,,Commented in module,SPECIAL-CLASS-CEASE - DD,conditional_derived,2,NUMERIC,0,N,N,left_zero,,,,413
+MAP_413,,,SPECIAL-CLASS-COMM-CODE,conditional_derived,1,CHAR,0,N,N,right_space,,,,414
+MAP_415,,"Flat extra info is carried in CVG tab for the ""TERM"" CVG_TYPE.  Just initialize these fields for now since the other rating fields are initialized.",FLAT-EXTRA-AMT,conditional_derived,5,PACKED_DECIMAL,2,Y,Y,left_zero,,,,416
+MAP_416,,,FLAT-EXTRA-REASON-CODE,conditional_derived,2,CHAR,0,N,N,right_space,,,,417
+MAP_417,,Initialize,FLAT-EXTRA-EXP-DATE,conditional_derived,,,,N,N,,,,,418
+MAP_418,,,FLAT-EXTRA-EXP-YY,conditional_derived,4,NUMERIC,0,N,N,left_zero,,,,419
+MAP_419,,,FLAT-EXTRA-EXP-MM,conditional_derived,2,NUMERIC,0,N,N,left_zero,,,,420
+MAP_420,,,FLAT-EXTRA-EXP-DD,conditional_derived,2,NUMERIC,0,N,N,left_zero,,,,421
+MAP_421,,,FLAT-EXTRA-COMM-CODE,conditional_derived,1,CHAR,0,N,N,right_space,,,,422
+MAP_423,,,FILLER,conditional_derived,25,CHAR,0,N,N,right_space,,,,424
+MAP_424,,'Y',FLAT-EXTRA-IND,conditional_derived,1,CHAR,0,N,N,right_space,,,,425
+MAP_425,,'Y',REINSURANCE-IND,conditional_derived,1,CHAR,0,N,N,right_space,,,,426
+MAP_426,,,INSERT-REINSURANCE,condition_name,,,,,,,,,,427
+MAP_427,,,FILLER,conditional_derived,23,CHAR,0,N,N,right_space,,,,428
+MAP_430,,,OWNER-DATA,GROUP_OR_PARENT,,,,N,N,,,,,431
+MAP_431,,,NAME,GROUP_OR_PARENT,,,,N,N,,,,,432
+MAP_432,,"If ROL_PERSON_CODE = O
+ROL_PERSON_TYPE eq 'I' - Move ADD_LAST_NAME",LAST-NAME,conditional_derived,35,CHAR,0,N,N,right_space,,,,433
+MAP_433,,"If ROL_PERSON_CODE = O
+ROL_PERSON_TYPE eq 'I' - Move 
+ADD_FIRST_NAME",FIRST-NAME,conditional_derived,25,CHAR,0,N,N,right_space,,,,434
+MAP_434,,"If ROL_PERSON_CODE = O
+ROL_PERSON_TYPE eq 'I' - Move 
+ADD_NAME_PREFIX",PREFIX,conditional_derived,10,CHAR,0,N,N,right_space,,,,435
+MAP_435,,"If ROL_PERSON_CODE = O
+ROL_PERSON_TYPE eq 'I' - Move 
+ADD_NAME_SUFFIX",SUFFIX,conditional_derived,10,CHAR,0,N,N,right_space,,,,436
+MAP_436,,"If ROL_PERSON_CODE = O AND
+ROL_PERSON_TYPE 
+eq 'I' - Move 'I'
+eq 'C' OR 'T' - MOVE 'C'
+else MOVE 'I'",CASE-INDIV-CODE,conditional_derived,1,CHAR,0,N,N,right_space,,,,437
+MAP_437,,"If ROL_PERSON_CODE = O
+ADD_ADDRESS_1",ADDRESS-1,conditional_derived,35,CHAR,0,N,N,right_space,,,,438
+MAP_438,,,CITY-STATE,GROUP_OR_PARENT,,,,N,N,,,,,439
+MAP_439,,"If ROL_PERSON_CODE = O
+ADD_ADDRESS_2",ADDRESS-LINE-2,conditional_derived,35,CHAR,0,N,N,right_space,,,,440
+MAP_440,,"If ROL_PERSON_CODE = O
+ADD_ADDRESS_3",ADDRESS-LINE-3,conditional_derived,35,CHAR,0,N,N,right_space,,,,441
+MAP_441,,,ADDRESS-LINE-4,conditional_derived,35,CHAR,0,N,N,right_space,,,,442
+MAP_442,,"If ROL_PERSON_CODE = O
+ADD_CITY",CITY,conditional_derived,30,CHAR,0,N,N,right_space,,,,443
+MAP_443,,"If ROL_PERSON_CODE = O
+ADD_STATE",STATE,conditional_derived,3,CHAR,0,N,N,right_space,,,,444
+MAP_444,,,FILLER,conditional_derived,2,CHAR,0,N,N,right_space,,,,445
+MAP_445,,,ADDRESS-LINE-AREA REDEFINES CITY-STATE,GROUP_OR_PARENT,,,,N,N,,,,,446
+MAP_447,,,ADDRESS-LINE,conditional_derived,35,CHAR,0,N,N,right_space,,,,448
+MAP_448,,,ZIP-POSTAL-CODE,GROUP_OR_PARENT,,,,N,N,,,,,449
+MAP_449,ADD,"If ROL_PERSON_CODE = O
+ADD_POSTAL_CODE
+
+Remember, you have to match the right address with the owner role.
+
+Note:  zip 5 and zip 4 comes from one staging template field ADD_POSTALCODE which is 10 characters- just use different parts of it",ZIP-POSTAL-CODE-5,zip_first5,05,CHAR,0,N,N,right_space,,,,450
+MAP_450,ADD,"If ROL_PERSON_CODE = O
+ADD_POSTAL_CODE
+
+Remember, you have to match the right address with the owner role.
+
+Note:  zip 5 and zip 4 comes from one staging template field ADD_POSTALCODE which is 10 characters- just use different parts of it",ZIP-POSTAL-CODE-4,zip_plus4,04,CHAR,0,N,N,right_space,,,,451
+MAP_451,,,ZIP-POSTAL-CODE-6,conditional_derived,06,CHAR,0,N,N,right_space,,,,452
+MAP_452,,,TAX-ID,GROUP_OR_PARENT,,,,N,N,,,,,453
+MAP_453,,"If ROL_PERSON_CODE = O, 
+MOVE ROL_TIN",TAX-ID-NUMBER,conditional_derived,15,CHAR,0,N,N,right_space,,,,454
+MAP_454,,,TAX-ID-SUFFIX,conditional_derived,1,CHAR,0,N,N,right_space,,,,455
+MAP_455,,Deleted what was here before.,BIRTHDATE,GROUP_OR_PARENT,,,,N,N,,,,,456
+MAP_456,,"If ROL_PERSON_CODE = O
+MOVE ROL_BIRTH_DATE",BIRTH-YY,date_split_year,4,NUMERIC,0,N,N,left_zero,,,,457
+MAP_457,,"If ROL_PERSON_CODE = O
+MOVE ROL_BIRTH_DATE",BIRTH-MM,date_split_month,2,NUMERIC,0,N,N,left_zero,,,,458
+MAP_458,,"If ROL_PERSON_CODE = O
+MOVE ROL_BIRTH_DATE",BIRTH-DD,date_split_day,2,NUMERIC,0,N,N,left_zero,,,,459
+MAP_459,,"If ROL_PERSON_CODE = O
+ROL_PERSON_TYPE EQ I
+MOVE ROL_SEX",SEX-CODE,conditional_derived,1,CHAR,0,N,N,right_space,,,,460
+MAP_460,,,COUNTRY-CODE,conditional_derived,2,CHAR,0,N,N,right_space,,,,461
+MAP_461,,,HANDLING-CODE,conditional_derived,1,CHAR,0,N,N,right_space,,,,462
+MAP_462,,,SPECIAL-CONDITION-1,conditional_derived,1,CHAR,0,N,N,right_space,,,,463
+MAP_463,,,SPECIAL-CONDITION-2,conditional_derived,1,CHAR,0,N,N,right_space,,,,464
+MAP_464,,'A',CITIZENSHIP-STATUS                                TRAD004,conditional_derived,1,CHAR,0,N,N,right_space,,,,465
+MAP_465,ROL,"ROL_CITIZENSHIP_COUNTRY:  
+If US, move US
+If CA, move CN",CITIZENSHIP-COUNTRY                            TRAD004,direct_copy,2,CHAR,0,N,N,right_space,,,,466
+MAP_466,ROL,ROL_CLIENT_ID,OWNER-DIRECTORY-ID                            TRAD038,conditional_derived,15,CHAR,0,N,N,right_space,,,,467
+MAP_467,ADD,ADD_STATE (for owner),OWNER-RES-STATE                                 TRAD038,direct_copy,3,CHAR,0,N,N,right_space,,,,468
+MAP_468,,,OWNER-RES-COUNTRY                          TRAD038,conditional_derived,2,CHAR,0,N,N,right_space,,,,469
+MAP_469,,zeros,W8BEN-RCD-DATE                                 TRAD038,conditional_derived,8,NUMERIC,0,N,N,left_zero,,,,470
+MAP_471,,,W8BEN-RCD-DATE-YY                          TRAD038,conditional_derived,4,NUMERIC,0,N,N,left_zero,,,,472
+MAP_472,,,W8BEN-RCD-DATE-MM                        TRAD038,conditional_derived,2,NUMERIC,0,N,N,left_zero,,,,473
+MAP_473,,,W8BEN-RCD-DATE-DD                        TRAD038,conditional_derived,2,NUMERIC,0,N,N,left_zero,,,,474
+MAP_474,,zeros,W8BEN-NXT-MAIL-DATE                      TRAD038,conditional_derived,8,NUMERIC,0,N,N,left_zero,,,,475
+MAP_476,,,W8BEN-NXT-MAIL-YY                             TRAD038,conditional_derived,4,NUMERIC,0,N,N,left_zero,,,,477
+MAP_477,,,W8BEN-NXT-MAIL-MM                            TRAD038,conditional_derived,2,NUMERIC,0,N,N,left_zero,,,,478
+MAP_478,,,W8BEN-NXT-MAIL-DD                           TRAD038,conditional_derived,2,NUMERIC,0,N,N,left_zero,,,,479
+MAP_479,,zeros,W8BEN-PRV-MAIL-DATE                     TRAD038,conditional_derived,8,NUMERIC,0,N,N,left_zero,,,,480
+MAP_481,,,W8BEN-PRV-MAIL-YY                           TRAD038,conditional_derived,4,NUMERIC,0,N,N,left_zero,,,,482
+MAP_482,,,W8BEN-PRV-MAIL-MM                         TRAD038,conditional_derived,2,NUMERIC,0,N,N,left_zero,,,,483
+MAP_483,,,W8BEN-PRV-MAIL-DD                         TRAD038,conditional_derived,2,NUMERIC,0,N,N,left_zero,,,,484
+MAP_484,,,FILLER                                                     TRAD028,conditional_derived,22,CHAR,0,N,N,right_space,,,,485
+MAP_485,,'000',REVERSION-AGE                                 TRAD028,conditional_derived,3,NUMERIC,0,N,N,left_zero,,,,486
+MAP_486,,,NO-REVERSION-AGE,condition_name,,,,,,,,,,487
+MAP_487,,,VALID-REVERSION-AGE,condition_name,,,,,,,,,,488
+MAP_488,ROL,ROL_PERSON_CODE = P + other applicable ROL fields,PAYOR-DATA,GROUP_OR_PARENT,,,,N,N,,,,,489
+MAP_489,,,NAME,GROUP_OR_PARENT,,,,N,N,,,,,490
+MAP_490,,"If ROL_PERSON_CODE = P 
+and ROL_PERSON_TYPE = I
+MOVE ADD_LAST_NAME",LAST-NAME,conditional_derived,35,CHAR,0,N,N,right_space,,,,491
+MAP_491,,"If ROL_PERSON_CODE = P 
+and ROL_PERSON_TYPE = I
+MOVE ADD_FIRST_NAME",FIRST-NAME,conditional_derived,25,CHAR,0,N,N,right_space,,,,492
+MAP_492,,"If ROL_PERSON_CODE = P 
+and ROL_PERSON_TYPE = I
+MOVE ADD_NAME_PREFIX",PREFIX,conditional_derived,10,CHAR,0,N,N,right_space,,,,493
+MAP_493,,"If ROL_PERSON_CODE = P 
+and ROL_PERSON_TYPE = I
+MOVE ADD_NAME_SUFFIX",SUFFIX,conditional_derived,10,CHAR,0,N,N,right_space,,,,494
+MAP_494,,"If ROL_PERSON_CODE = P AND
+ROL_PERSON_TYPE 
+eq 'I' - Move 'I'
+eq 'C' OR 'T' - MOVE 'C'
+else MOVE 'I'",CASE-INDIV-CODE,conditional_derived,1,CHAR,0,N,N,right_space,,,,495
+MAP_495,,"If ROL_PERSON_CODE = P 
+MOVE ADD_ADDRESS_1",ADDRESS-1,conditional_derived,35,CHAR,0,N,N,right_space,,,,496
+MAP_496,,,CITY-STATE,GROUP_OR_PARENT,,,,N,N,,,,,497
+MAP_497,,"If ROL_PERSON_CODE = P 
+MOVE ADD_ADDRESS_2",ADDRESS-LINE-2,conditional_derived,35,CHAR,0,N,N,right_space,,,,498
+MAP_498,,"If ROL_PERSON_CODE = P 
+MOVE ADD_ADDRESS_3",ADDRESS-LINE-3,conditional_derived,35,CHAR,0,N,N,right_space,,,,499
+MAP_499,,,ADDRESS-LINE-4,conditional_derived,35,CHAR,0,N,N,right_space,,,,500
+MAP_500,ADD,ADD_CITY,CITY,conditional_derived,30,CHAR,0,N,N,right_space,,,,501
+MAP_501,ADD,ADD_STATE,STATE,conditional_derived,3,CHAR,0,N,N,right_space,,,,502
+MAP_502,,,FILLER,conditional_derived,2,CHAR,0,N,N,right_space,,,,503
+MAP_503,,,ADDRESS-LINE-AREA REDEFINES CITY-STATE,GROUP_OR_PARENT,,,,N,N,,,,,504
+MAP_505,,,ADDRESS-LINE,conditional_derived,35,CHAR,0,N,N,right_space,,,,506
+MAP_506,,,ZIP-POSTAL-CODE,GROUP_OR_PARENT,,,,N,N,,,,,507
+MAP_507,ADD,"ADD_POSTAL_CODE
+
+Remember, you have to get the payor address.
+
+Note:  zip 5 and zip 4 comes from one staging template field ADD_POSTALCODE which is 10 characters- just use different parts of it",ZIP-POSTAL-CODE-5,zip_first5,05,CHAR,0,N,N,right_space,,,,508
+MAP_508,ADD,"ADD_POSTAL_CODE
+
+Remember, you have to get the payor address.
+
+Note:  zip 5 and zip 4 comes from one staging template field ADD_POSTALCODE which is 10 characters- just use different parts of it",ZIP-POSTAL-CODE-4,zip_plus4,04,CHAR,0,N,N,right_space,,,,509
+MAP_509,,,ZIP-POSTAL-CODE-6,conditional_derived,06,CHAR,0,N,N,right_space,,,,510
+MAP_510,,,TAX-ID,GROUP_OR_PARENT,,,,N,N,,,,,511
+MAP_511,ROL,ROL_TIN,TAX-ID-NUMBER,conditional_derived,15,CHAR,0,N,N,right_space,,,,512
+MAP_512,,,TAX-ID-SUFFIX,conditional_derived,1,CHAR,0,N,N,right_space,,,,513
+MAP_513,,IF BIRTHDATE IN PAYOR-DATA  = 99999999 OR ZEROS               MOVE '19000101' TO BIRTHDATE IN PAYOR-DATA,BIRTHDATE,GROUP_OR_PARENT,,,,N,N,,,,,514
+MAP_514,,"If ROL_PERSON_CODE = P
+
+MOVE ROL_BIRTH_DATE",BIRTH-YY,date_split_year,4,NUMERIC,0,N,N,left_zero,,,,515
+MAP_515,,"If ROL_PERSON_CODE = P
+
+MOVE ROL_BIRTH_DATE",BIRTH-MM,date_split_month,2,NUMERIC,0,N,N,left_zero,,,,516
+MAP_516,,"If ROL_PERSON_CODE = P
+
+MOVE ROL_BIRTH_DATE",BIRTH-DD,date_split_day,2,NUMERIC,0,N,N,left_zero,,,,517
+MAP_517,,"If ROL_PERSON_CODE = P 
+and ROL_PERSON_TYPE = C or T 
+Move 'E'.
+OR
+If ROL_PERSON_CODE = P
+and ROL_PERSON_TYPE = I 
+Move ROL_SEX",SEX-CODE,conditional_derived,1,CHAR,0,N,N,right_space,,,,518
+MAP_518,,,COUNTRY-CODE,conditional_derived,2,CHAR,0,N,N,right_space,,,,519
+MAP_519,,,HANDLING-CODE,conditional_derived,1,CHAR,0,N,N,right_space,,,,520
+MAP_520,,,SPECIAL-CONDITION-1,conditional_derived,1,CHAR,0,N,N,right_space,,,,521
+MAP_521,,,SPECIAL-CONDITION-2,conditional_derived,1,CHAR,0,N,N,right_space,,,,522
+MAP_522,,'A',CITIZENSHIP-STATUS,conditional_derived,1,CHAR,0,N,N,right_space,,,,523
+MAP_523,ROL,"ROL_CITIZENSHIP_COUNTRY:  
+If US, move US
+If CA, move CN",CITIZENSHIP-COUNTRY,direct_copy,2,CHAR,0,N,N,right_space,,,,524
+MAP_524,ROL,ROL_CLIENT_ID,PAYOR-DIRECTORY-ID,conditional_derived,15,CHAR,0,N,N,right_space,,,,525
+MAP_525,,,FILLER,conditional_derived,25,CHAR,0,N,N,right_space,,,,526
+MAP_527,,N,ADVANCE-INDICATOR,conditional_derived,1,CHAR,0,N,N,right_space,,,,528
+MAP_528,CNT,CNT_APPLICATION_DATE,APPLICATION-DATE,GROUP_OR_PARENT,,,,N,N,,,,,529
+MAP_529,CNT,CNT_APPLICATION_DATE,APPLICATION-YY,date_split_year,4,NUMERIC,0,N,N,left_zero,,,,530
+MAP_530,CNT,CNT_APPLICATION_DATE,APPLICATION-MM,date_split_month,2,NUMERIC,0,N,N,left_zero,,,,531
+MAP_531,CNT,CNT_APPLICATION_DATE,APPLICATION-DD,date_split_day,2,NUMERIC,0,N,N,left_zero,,,,532
+MAP_532,,N,SPECIAL-CASE-INDICATOR,conditional_derived,1,CHAR,0,N,N,right_space,,,,533
+MAP_533,,,FILLER,conditional_derived,74,CHAR,0,N,N,right_space,,,,534
+MAP_536,,,REPLACEMENT-EFF-DATE,GROUP_OR_PARENT,,,,N,N,,,,,537
+MAP_537,,,REPLACEMENT-EFF-YY,conditional_derived,4,NUMERIC,0,N,N,left_zero,,,,538
+MAP_538,,,REPLACEMENT-EFF-MM,conditional_derived,2,NUMERIC,0,N,N,left_zero,,,,539
+MAP_539,,,REPLACEMENT-EFF-DD,conditional_derived,2,NUMERIC,0,N,N,left_zero,,,,540
+MAP_540,,,OLD-POLICY-NUMBER,conditional_derived,15,CHAR,0,N,N,right_space,,,,541
+MAP_541,,,OLD-POLICY-ISSUE-DATE,GROUP_OR_PARENT,,,,N,N,,,,,542
+MAP_542,,,OLD-POLICY-ISSUE-YY,conditional_derived,4,NUMERIC,0,N,N,left_zero,,,,543
+MAP_543,,,OLD-POLICY-ISSUE-MM,conditional_derived,2,NUMERIC,0,N,N,left_zero,,,,544
+MAP_544,,,OLD-POLICY-ISSUE-DD,conditional_derived,2,NUMERIC,0,N,N,left_zero,,,,545
+MAP_545,,,OLD-CASH-VALUE,conditional_derived,11,PACKED_DECIMAL,2,Y,Y,left_zero,,,,546
+MAP_546,,,OLD-POLICY-FACE-AMOUNT,conditional_derived,11,PACKED_DECIMAL,2,Y,Y,left_zero,,,,547
+MAP_547,,,COST-BASIS,conditional_derived,11,PACKED_DECIMAL,2,Y,Y,left_zero,,,,548
+MAP_548,,,OLD-ANNUAL-PREM,conditional_derived,11,PACKED_DECIMAL,2,Y,Y,left_zero,,,,549
+MAP_549,,,PROFIT-LOSS,conditional_derived,11,PACKED_DECIMAL,2,Y,Y,left_zero,,,,550
+MAP_551,,,ORIG-WRITING-AGENT-PERSON,conditional_derived,10,CHAR,0,N,N,right_space,,,,552
+MAP_552,,,CVG-UNITS-REG-COMM,conditional_derived,11,PACKED_DECIMAL,5,Y,Y,left_zero,,,,553
+MAP_553,,,CVG-UNITS-NON-REG-COMM,conditional_derived,11,PACKED_DECIMAL,5,Y,Y,left_zero,,,,554
+MAP_554,,,NON-REG-FIRST-YR-COMM-RATE,conditional_derived,4,PACKED_DECIMAL,1,Y,Y,left_zero,,,,555
+MAP_555,,,NON-REG-RENEW-COMM-RATE,conditional_derived,4,PACKED_DECIMAL,1,Y,Y,left_zero,,,,556
+MAP_556,,,CONVERSION-CREDIT-AMT,conditional_derived,11,PACKED_DECIMAL,2,Y,Y,left_zero,,,,557
+MAP_557,,,CONVERSION-COMM-IND,conditional_derived,1,CHAR,0,N,N,right_space,,,,558
+MAP_558,,,FILLER,conditional_derived,50,CHAR,0,N,N,right_space,,,,559
+MAP_560,,,TERM-PREFIX-DATA-AREA,GROUP_OR_PARENT,,,,N,N,,,,,561
+MAP_561,,,TERM-PRE-PLAN-CODE,conditional_derived,06,CHAR,0,N,N,right_space,,,,562
+MAP_562,,,TERM-PRE-NUMBER-UNITS,conditional_derived,11,PACKED_DECIMAL,5,Y,Y,left_zero,,,,563
+MAP_563,,,TERM-PRE-EFFECTIVE-DATE,conditional_derived,,,,N,N,,,,,564
+MAP_564,,,TERM-PRE-EFF-YR,conditional_derived,4,NUMERIC,0,N,N,left_zero,,,,565
+MAP_565,,,TERM-PRE-EFF-MO,conditional_derived,2,NUMERIC,0,N,N,left_zero,,,,566
+MAP_566,,,TERM-PRE-EFF-DA,conditional_derived,2,NUMERIC,0,N,N,left_zero,,,,567
+MAP_567,,,TERM-PRE-ISSUE-AGE-OVR,conditional_derived,3,BINARY,0,Y,N,left_zero,,,,568
+MAP_568,,,TP-ISSUE-AGE-OVR-REDEF REDEFINES TERM-PRE-ISSUE-AGE-OVR,conditional_derived,2,CHAR,0,N,N,right_space,,,,569
+MAP_569,,,TERM-PRE-TRUE-AGE,conditional_derived,3,BINARY,0,Y,N,left_zero,,,,570
+MAP_570,,,TERM-PRE-APU-OVERRIDE,conditional_derived,11,PACKED_DECIMAL,2,Y,Y,left_zero,,,,571
+MAP_571,,,TERM-PRE-EXPIRATION-DATE,GROUP_OR_PARENT,,,,N,N,,,,,572
+MAP_572,,,TERM-PRE-EXP-YR,conditional_derived,4,NUMERIC,0,N,N,left_zero,,,,573
+MAP_573,,,TERM-PRE-EXP-MO,conditional_derived,2,NUMERIC,0,N,N,left_zero,,,,574
+MAP_574,,,TERM-PRE-EXP-DA,conditional_derived,2,NUMERIC,0,N,N,left_zero,,,,575
+MAP_575,,,TERM-PRE-BILL-EXTR-DT,GROUP_OR_PARENT,,,,N,N,,,,,576
+MAP_576,,,TP-BILL-EXTR-YR,conditional_derived,4,NUMERIC,0,N,N,left_zero,,,,577
+MAP_577,,,TP-BILL-EXTR-MO,conditional_derived,2,NUMERIC,0,N,N,left_zero,,,,578
+MAP_578,,,TP-BILL-EXTR-DA,conditional_derived,2,NUMERIC,0,N,N,left_zero,,,,579
+MAP_580,,,FILLER,conditional_derived,149,CHAR,0,N,N,right_space,,,,581
+MAP_584,,,PENSION-IND,conditional_derived,1,CHAR,0,N,N,right_space,,,,585
+MAP_585,,,LAST-FIN-PROCESS-DATE,GROUP_OR_PARENT,,,,N,N,,,,,586
+MAP_586,,,LAST-FIN-PROCESS-YY,conditional_derived,4,NUMERIC,0,N,N,left_zero,,,,587
+MAP_587,,,LAST-FIN-PROCESS-MM,conditional_derived,2,NUMERIC,0,N,N,left_zero,,,,588
+MAP_588,,,LAST-FIN-PROCESS-DD,conditional_derived,2,NUMERIC,0,N,N,left_zero,,,,589
+MAP_589,,,LAST-NON-FIN-PROCESS-DATE,GROUP_OR_PARENT,,,,N,N,,,,,590
+MAP_590,,,LAST-NON-FIN-PROCESS-YY,conditional_derived,4,NUMERIC,0,N,N,left_zero,,,,591
+MAP_591,,,LAST-NON-FIN-PROCESS-MM,conditional_derived,2,NUMERIC,0,N,N,left_zero,,,,592
+MAP_592,,,LAST-NON-FIN-PROCESS-DD,conditional_derived,2,NUMERIC,0,N,N,left_zero,,,,593
+MAP_593,,,LAST-FIN-EFF-DATE,GROUP_OR_PARENT,,,,N,N,,,,,594
+MAP_594,,,LAST-FIN-EFF-YY,conditional_derived,4,NUMERIC,0,N,N,left_zero,,,,595
+MAP_595,,,LAST-FIN-EFF-MM,conditional_derived,2,NUMERIC,0,N,N,left_zero,,,,596
+MAP_596,,,LAST-FIN-EFF-DD,conditional_derived,2,NUMERIC,0,N,N,left_zero,,,,597
+MAP_597,,,PAYMENT-DUE-DATE,GROUP_OR_PARENT,,,,N,N,,,,,598
+MAP_598,,,PAYMENT-DUE-YY,conditional_derived,4,NUMERIC,0,N,N,left_zero,,,,599
+MAP_599,,,PAYMENT-DUE-MM,conditional_derived,2,NUMERIC,0,N,N,left_zero,,,,600
+MAP_600,,,PAYMENT-DUE-DD,conditional_derived,2,NUMERIC,0,N,N,left_zero,,,,601
+MAP_601,,"PIT_PLANNED_INIT_PREM
+
+Note:  Be careful - 11 byte field being packed into 6 byte field.",INITIAL-DEPOSIT-PREMIUM,conditional_derived,11,PACKED_DECIMAL,2,Y,Y,left_zero,,,,602
+MAP_602,,"MOVE:  PIT_PLANNED_PREM * F where F = :
+
+if PRM_MODE = M, F = 12
+If PRM_MODE = Q, F = 4
+If PRM_MODE = S, F = 2
+If PRM_MODE = A, F=1
+If PRM_MODE = BW, F = 52/2
+If PRM_MODE = SM, F= 24
+If PRM_MODE = W, F = 52
+If PRM_MODE = 09 or 10 or 13, F = 12
+
+
+
+Note:  Be careful - 11 byte field being packed into 6 byte field.",ANTICIPATED-ANNUAL-PREM,conditional_derived,11,PACKED_DECIMAL,2,Y,Y,left_zero,,,,603
+MAP_603,,,CVG-TERM-AGE,conditional_derived,3,BINARY,0,Y,N,left_zero,,,,604
+MAP_604,,,PREM-TERM-AGE,conditional_derived,3,BINARY,0,Y,N,left_zero,,,,605
+MAP_605,,,CVG-TERM-BASIS,conditional_derived,1,CHAR,0,N,N,right_space,,,,606
+MAP_606,,,PREM-TERM-BASIS,conditional_derived,1,CHAR,0,N,N,right_space,,,,607
+MAP_607,,,GRACE-PERIOD-BILLING-IND,conditional_derived,1,CHAR,0,N,N,right_space,,,,608
+MAP_608,,,INS-CLASS-CODE,conditional_derived,1,CHAR,0,N,N,right_space,,,,609
+MAP_609,,,LEVEL-PREM-IND,conditional_derived,1,CHAR,0,N,N,right_space,,,,610
+MAP_610,,,DEATH-BENEFIT-AMT-IND,conditional_derived,1,CHAR,0,N,N,right_space,,,,611
+MAP_611,,,LEVEL-DEATH-BENEFIT,condition_name,,,,,,,,,,612
+MAP_612,,,NON-LEVEL-DEATH-BENEFIT,condition_name,,,,,,,,,,613
+MAP_613,,,OTHER-LEVEL-DEATH-BENEFIT,condition_name,,,,,,,,,,615
+MAP_614,,,NOT-APPLICABLE-DEATH-BENEFIT,condition_name,,,,,,,,,,616
+MAP_615,,,CASH-VALUE-METHOD,conditional_derived,1,CHAR,0,N,N,right_space,,,,617
+MAP_616,,,TABULAR-CASH-VALUE-LOANABLE,condition_name,,,,,,,,,,618
+MAP_617,,,TABULAR-CASH-VALUE-NO-LOAN,condition_name,,,,,,,,,,619
+MAP_618,,,NO-CASH-VALUES,condition_name,,,,,,,,,,620
+MAP_619,CNT,CNT_PARTICIPATION_STATUS,PAR-NON-PAR-IND,conditional_derived,1,CHAR,0,N,N,right_space,,,,621
+MAP_620,,,PARTICIPATING-PLAN,condition_name,,,,,,,,,,622
+MAP_621,,,NON-PARTICIPATING-PLAN,condition_name,,,,,,,,,,623
+MAP_622,CNT,"CNT_QUALIFICATION_CODE eq N, move N.
+Else, MOVE Q.",QUAL-NON-QUAL-IND,direct_copy,1,CHAR,0,N,N,right_space,,,,624
+MAP_623,,,GROUP-INDIV-CODE,conditional_derived,1,CHAR,0,N,N,right_space,,,,625
+MAP_624,,,REPLACEMENT-IND,conditional_derived,1,CHAR,0,N,N,right_space,,,,626
+MAP_625,,'N',CVG-USER-AREA-IND,conditional_derived,1,CHAR,0,N,N,right_space,,,,627
+MAP_626,,,CVG-USER-AREA-PENDING,condition_name,,,,,,,,,,628
+MAP_627,,'N',CONTRACT-USER-AREA-IND,conditional_derived,1,CHAR,0,N,N,right_space,,,,629
+MAP_628,,,CONTRACT-USER-AREA-PENDING,condition_name,,,,,,,,,,630
+MAP_629,,'N',BILL-PAC-USER-AREA-IND,conditional_derived,1,CHAR,0,N,N,right_space,,,,631
+MAP_630,,,BILL-PAC-USER-AREA-PENDING,condition_name,,,,,,,,,,632
+MAP_631,,'N',PRODUCER-USER-AREA-IND,conditional_derived,1,CHAR,0,N,N,right_space,,,,633
+MAP_632,,,PRODUCER-USER-AREA-PENDING,condition_name,,,,,,,,,,634
+MAP_633,,"'N'
+Based on Vsam Notepad read successful Move 'Y'",EAA-AREA-IND,conditional_derived,1,CHAR,0,N,N,right_space,,,,635
+MAP_634,,,EAA-TRX-PENDING,condition_name,,,,,,,,,,636
+MAP_635,,'N',LODA-AREA-IND,conditional_derived,1,CHAR,0,N,N,right_space,,,,637
+MAP_636,,,LODA-TRX-PENDING,condition_name,,,,,,,,,,638
+MAP_637,CNT,CNT_ISSUE_AGE,POLICY-ISSUE-AGE,conditional_derived,3,BINARY,0,Y,N,left_zero,,,,639
+MAP_638,,,TRUE-AGE,conditional_derived,3,BINARY,0,Y,N,left_zero,,,,640
+MAP_639,,,UNDER-AGE,conditional_derived,3,BINARY,0,Y,N,left_zero,,,,641
+MAP_640,,,MATURITY-AGE,conditional_derived,3,BINARY,0,Y,N,left_zero,,,,642
+MAP_641,,,ANNUALIZED-PREM,conditional_derived,11,PACKED_DECIMAL,2,Y,Y,left_zero,,,,643
+MAP_642,,,CALCULATED-MODE-PREM,conditional_derived,11,PACKED_DECIMAL,2,Y,Y,left_zero,,,,644
+MAP_643,,,PREM-TERM-DATE,GROUP_OR_PARENT,,,,N,N,,,,,645
+MAP_644,,"CNT POLICY STATUS = 02, 22, 03, 23, 04, 24, or 05, 
+MOVE CNT_PAYUP_DATE",PREM-TERM-YY,date_split_year,4,NUMERIC,0,N,N,left_zero,,,,646
+MAP_645,,"CNT POLICY STATUS = 02, 22, 03, 23, 04, 24, or 05, 
+MOVE CNT_PAYUP_DATE",PREM-TERM-MM,date_split_month,2,NUMERIC,0,N,N,left_zero,,,,647
+MAP_646,,"CNT POLICY STATUS = 02, 22, 03, 23, 04, 24, or 05, 
+MOVE CNT_PAYUP_DATE",PREM-TERM-DD,date_split_day,2,NUMERIC,0,N,N,left_zero,,,,648
+MAP_647,CVG,CVG_MATURE_EXPIRE_DATE,CVG-TERM-DATE,GROUP_OR_PARENT,,,,N,N,,,,,649
+MAP_648,CVG,CVG_MATURE_EXPIRE_DATE,CVG-TERM-YY,date_split_year,4,NUMERIC,0,N,N,left_zero,,,,650
+MAP_649,CVG,CVG_MATURE_EXPIRE_DATE,CVG-TERM-MM,date_split_month,2,NUMERIC,0,N,N,left_zero,,,,651
+MAP_650,CVG,CVG_MATURE_EXPIRE_DATE,CVG-TERM-DD,date_split_day,2,NUMERIC,0,N,N,left_zero,,,,652
+MAP_651,,,POLICY-ANNIV-DATE,GROUP_OR_PARENT,,,,N,N,,,,,653
+MAP_652,,,POLICY-ANNIV-YY,conditional_derived,4,NUMERIC,0,N,N,left_zero,,,,654
+MAP_653,,,POLICY-ANNIV-MM,conditional_derived,2,NUMERIC,0,N,N,left_zero,,,,655
+MAP_654,,,POLICY-ANNIV-DD,conditional_derived,2,NUMERIC,0,N,N,left_zero,,,,656
+MAP_655,,,FILE-DATE,GROUP_OR_PARENT,,,,N,N,,,,,657
+MAP_656,,,FILE-YY,conditional_derived,4,NUMERIC,0,N,N,left_zero,,,,658
+MAP_657,,,FILE-MM,conditional_derived,2,NUMERIC,0,N,N,left_zero,,,,659
+MAP_658,,,FILE-DD,conditional_derived,2,NUMERIC,0,N,N,left_zero,,,,660
+MAP_659,CNT,CNT_STATUS_DATE,LAST-STATUS-CHANGE-DATE,GROUP_OR_PARENT,,,,N,N,,,,,661
+MAP_660,CNT,CNT_STATUS_DATE,LAST-STATUS-CHANGE-YY,date_split_year,4,NUMERIC,0,N,N,left_zero,,,,662
+MAP_661,CNT,CNT_STATUS_DATE,LAST-STATUS-CHANGE-MM,date_split_month,2,NUMERIC,0,N,N,left_zero,,,,663
+MAP_662,CNT,CNT_STATUS_DATE,LAST-STATUS-CHANGE-DD,date_split_day,2,NUMERIC,0,N,N,left_zero,,,,664
+MAP_663,,,INIT-PREM-TRX-DATE,GROUP_OR_PARENT,,,,N,N,,,,,665
+MAP_664,,,INIT-PREM-TRX-YY,conditional_derived,4,NUMERIC,0,N,N,left_zero,,,,666
+MAP_665,,,INIT-PREM-TRX-MM,conditional_derived,2,NUMERIC,0,N,N,left_zero,,,,667
+MAP_666,,,INIT-PREM-TRX-DD,conditional_derived,2,NUMERIC,0,N,N,left_zero,,,,668
+MAP_667,,,INIT-PREM-EFF-DATE,GROUP_OR_PARENT,,,,N,N,,,,,669
+MAP_668,,,INIT-PREM-EFF-YY,conditional_derived,4,NUMERIC,0,N,N,left_zero,,,,670
+MAP_669,,,INIT-PREM-EFF-MM,conditional_derived,2,NUMERIC,0,N,N,left_zero,,,,671
+MAP_670,,,INIT-PREM-EFF-DD,conditional_derived,2,NUMERIC,0,N,N,left_zero,,,,672
+MAP_671,,,LAST-PREM-TRX-DATE,GROUP_OR_PARENT,,,,N,N,,,,,673
+MAP_672,,,LAST-PREM-TRX-YY,conditional_derived,4,NUMERIC,0,N,N,left_zero,,,,674
+MAP_673,,,LAST-PREM-TRX-MM,conditional_derived,2,NUMERIC,0,N,N,left_zero,,,,675
+MAP_674,,,LAST-PREM-TRX-DD,conditional_derived,2,NUMERIC,0,N,N,left_zero,,,,676
+MAP_675,,,LAST-PREM-EFF-DATE,GROUP_OR_PARENT,,,,N,N,,,,,677
+MAP_676,,,LAST-PREM-EFF-YY,conditional_derived,4,NUMERIC,0,N,N,left_zero,,,,678
+MAP_677,,,LAST-PREM-EFF-MM,conditional_derived,2,NUMERIC,0,N,N,left_zero,,,,679
+MAP_678,,,LAST-PREM-EFF-DD,conditional_derived,2,NUMERIC,0,N,N,left_zero,,,,680
+MAP_679,,,MATURITY-DATE,GROUP_OR_PARENT,,,,N,N,,,,,681
+MAP_680,,"If CNT_POLICY_STATUS = 03, 23, 04, 24, MOVE CNT_MATURE_EXPIRE_DATE.
+
+If CNT_PRODUCT_TYPE eq I
+MOVE CNT_MATURE_EXPIRE_DATE.",MATURITY-YY,date_split_year,4,NUMERIC,0,N,N,left_zero,,,,682
+MAP_681,,"If CNT_POLICY_STATUS = 03, 23, 04, 24, MOVE CNT_MATURE_EXPIRE_DATE.
+
+If CNT_PRODUCT_TYPE eq I
+MOVE CNT_MATURE_EXPIRE_DATE.",MATURITY-MM,date_split_month,2,NUMERIC,0,N,N,left_zero,,,,683
+MAP_682,,"If CNT_POLICY_STATUS = 03, 23, 04, 24, MOVE CNT_MATURE_EXPIRE_DATE.
+
+If CNT_PRODUCT_TYPE eq I
+MOVE CNT_MATURE_EXPIRE_DATE.",MATURITY-DD,date_split_day,2,NUMERIC,0,N,N,left_zero,,,,684
+MAP_683,,,DATE-OF-DEATH,GROUP_OR_PARENT,,,,N,N,,,,,685
+MAP_684,,,DATE-OF-DEATH-YY,conditional_derived,4,NUMERIC,0,N,N,left_zero,,,,686
+MAP_685,,,DATE-OF-DEATH-MM,conditional_derived,2,NUMERIC,0,N,N,left_zero,,,,687
+MAP_686,,,DATE-OF-DEATH-DD,conditional_derived,2,NUMERIC,0,N,N,left_zero,,,,688
+MAP_687,,,DISAB-TERM-CODE,conditional_derived,1,CHAR,0,N,N,right_space,,,,689
+MAP_688,,,COST-BASIS-OVERRIDE,conditional_derived,11,PACKED_DECIMAL,2,Y,Y,left_zero,,,,690
+MAP_689,,,FILLER,conditional_derived,1,CHAR,0,N,N,right_space,,,,691
+MAP_690,,,REISSUE-NA-AMOUNT,conditional_derived,11,PACKED_DECIMAL,2,Y,Y,left_zero,,,,692
+MAP_691,,,REISSUE-NE-AMOUNT,conditional_derived,11,PACKED_DECIMAL,2,Y,Y,left_zero,,,,693
+MAP_692,,,REISSUE-MA-AMOUNT,conditional_derived,11,PACKED_DECIMAL,2,Y,Y,left_zero,,,,694
+MAP_693,,,REISSUE-NA-TICKET-NO.V6236,GROUP_OR_PARENT,,,,N,N,,,,,695
+MAP_694,,,REISSUE-NA-TICKET-NO-1,conditional_derived,1,CHAR,0,N,N,right_space,,,,696
+MAP_695,,,REISSUE-NA-TICKET-NO-4,conditional_derived,4,NUMERIC,0,N,N,left_zero,,,,697
+MAP_696,,,REISSUE-NE-TICKET-NO.V6236,GROUP_OR_PARENT,,,,N,N,,,,,698
+MAP_697,,,REISSUE-NE-TICKET-NO-1,conditional_derived,1,CHAR,0,N,N,right_space,,,,699
+MAP_698,,,REISSUE-NE-TICKET-NO-4,conditional_derived,4,NUMERIC,0,N,N,left_zero,,,,700
+MAP_699,,,REISSUE-MA-TICKET-NO.V6236,GROUP_OR_PARENT,,,,N,N,,,,,701
+MAP_700,,,REISSUE-MA-TICKET-NO-1,conditional_derived,1,CHAR,0,N,N,right_space,,,,702
+MAP_701,,,REISSUE-MA-TICKET-NO-4,conditional_derived,4,NUMERIC,0,N,N,left_zero,,,,703
+MAP_702,,,REISSUE-EFF-DATE,GROUP_OR_PARENT,,,,N,N,,,,,704
+MAP_703,,,REISSUE-EFF-YY,conditional_derived,4,NUMERIC,0,N,N,left_zero,,,,705
+MAP_704,,,REISSUE-EFF-MM,conditional_derived,2,NUMERIC,0,N,N,left_zero,,,,706
+MAP_705,,,REISSUE-EFF-DD,conditional_derived,2,NUMERIC,0,N,N,left_zero,,,,707
+MAP_706,,,CO-OWNER-DATA-AREA,GROUP_OR_PARENT,,,,N,N,,,,,708
+MAP_707,,"BE AWARE:   THERE CAN BE 10 COOWNERS in WMA - this is in addition to the main owner!  Each co-owner section is in brown below.  So, coding examples are given for the 1st co-owner below (i.e., the 2nd owner after the main owner).",CO-OWNER-ADDRESS-INFO OCCURS 10 TIMES,GROUP_OR_PARENT,,,,N,N,,,,,709
+MAP_708,,,CON-ADDR-DATA,GROUP_OR_PARENT,,,,N,N,,,,,710
+MAP_709,,,NAME,GROUP_OR_PARENT,,,,N,N,,,,,711
+MAP_710,,"If ROL_PERSON_SEQUENCE = 2 and ROL_PERSON_CODE = O 
+and ROL_PERSON_TYPE = I 
+MOVE ADD_LAST_NAME",LAST-NAME,conditional_derived,35,CHAR,0,N,N,right_space,,,,712
+MAP_711,,"If ROL_PERSON_SEQUENCE = 2 and ROL_PERSON_CODE = O 
+and ROL_PERSON_TYPE = I 
+MOVE ADD_FIRST_NAME",FIRST-NAME,conditional_derived,25,CHAR,0,N,N,right_space,,,,713
+MAP_712,,"If ROL_PERSON_SEQUENCE = 2 and ROL_PERSON_CODE = O 
+and ROL_PERSON_TYPE = I 
+MOVE ADD_NAME_PREFIX",PREFIX,conditional_derived,10,CHAR,0,N,N,right_space,,,,714
+MAP_713,,"If ROL_PERSON_SEQUENCE = 2 and ROL_PERSON_CODE = O 
+and ROL_PERSON_TYPE = I 
+MOVE ADD_NAME_SUFFIX",SUFFIX,conditional_derived,10,CHAR,0,N,N,right_space,,,,715
+MAP_714,,"If  ROL_PERSON_SEQUENCE = 2 and ROL_PERSON_CODE = O 
+Move ADD_ADDRESS_1",ADDRESS-1,conditional_derived,35,CHAR,0,N,N,right_space,,,,716
+MAP_715,,,CITY-STATE,GROUP_OR_PARENT,,,,N,N,,,,,717
+MAP_716,,"If  ROL_PERSON_SEQUENCE = 2 and ROL_PERSON_CODE = O 
+Move ADD_ADDRESS_2",ADDRESS-LINE-2,conditional_derived,35,CHAR,0,N,N,right_space,,,,718
+MAP_717,,"If  ROL_PERSON_SEQUENCE = 2 and ROL_PERSON_CODE = O 
+Move ADD_ADDRESS_3",ADDRESS-LINE-3,conditional_derived,35,CHAR,0,N,N,right_space,,,,719
+MAP_718,,,ADDRESS-LINE-4,conditional_derived,35,CHAR,0,N,N,right_space,,,,720
+MAP_719,,"If  ROL_PERSON_SEQUENCE = 2 and ROL_PERSON_CODE = O 
+Move ADD_CITY",CITY,conditional_derived,30,CHAR,0,N,N,right_space,,,,721
+MAP_720,,"If  ROL_PERSON_SEQUENCE = 2 and ROL_PERSON_CODE = O 
+Move ADD_STATE",STATE,conditional_derived,03,CHAR,0,N,N,right_space,,,,722
+MAP_721,,,FILLER,conditional_derived,02,CHAR,0,N,N,right_space,,,,723
+MAP_724,,,ADDRESS-LINE,conditional_derived,35,CHAR,0,N,N,right_space,,,,726
+MAP_725,,,ZIP-POSTL-CDE,GROUP_OR_PARENT,,,,N,N,,,,,727
+MAP_726,ADD,"If  ROL_PERSON_SEQUENCE = 2 and ROL_PERSON_CODE = O 
+Move ADD_POSTAL_CODE
+
+Note:  zip 5 and zip 4 comes from one staging template field ADD_POSTALCODE which is 10 characters- just use different parts of it.",ZIP-POSTAL-CODE-5,zip_first5,05,CHAR,0,N,N,right_space,,,,728
+MAP_727,ADD,"If  ROL_PERSON_SEQUENCE = 2 and ROL_PERSON_CODE = O 
+Move ADD_POSTAL_CODE
+
+Note:  zip 5 and zip 4 comes from one staging template field ADD_POSTALCODE which is 10 characters- just use different parts of it.",ZIP-POSTAL-CODE-4,zip_plus4,04,CHAR,0,N,N,right_space,,,,729
+MAP_728,,,ZIP-POSTAL-CODE-6,conditional_derived,06,CHAR,0,N,N,right_space,,,,730
+MAP_729,,,TAX-ID,GROUP_OR_PARENT,,,,N,N,,,,,731
+MAP_730,,"If  ROL_PERSON_SEQUENCE = 2 and ROL_PERSON_CODE = O 
+Move ROL_TIN",TAX-ID-NUMBER,conditional_derived,15,CHAR,0,N,N,right_space,,,,732
+MAP_731,,,TAX-ID-SUFFIX,conditional_derived,1,CHAR,0,N,N,right_space,,,,733
+MAP_732,,"If ROL_PERSON_SEQUENCE = 2 and ROL_PERSON_CODE = O AND
+ROL_PERSON_TYPE 
+eq 'I' - Move 'I'
+eq 'C' OR 'T' - MOVE 'C'
+else MOVE 'I'",CASE-INDIV-CODE,conditional_derived,1,CHAR,0,N,N,right_space,,,,734
+MAP_733,,,COUNTRY-CODE,conditional_derived,2,CHAR,0,N,N,right_space,,,,735
+MAP_734,,,BIRTHDATE,GROUP_OR_PARENT,,,,N,N,,,,,736
+MAP_735,,"If  ROL_PERSON_SEQUENCE = 2 and  ROL_PERSON_CODE = O
+
+Move ROL_BIRTH_DATE",BIRTH-YR,date_split_year,4,NUMERIC,0,N,N,left_zero,,,,737
+MAP_736,,"If  ROL_PERSON_SEQUENCE = 2 and  ROL_PERSON_CODE = O
+
+Move ROL_BIRTH_DATE",BIRTH-MO,date_split_month,2,NUMERIC,0,N,N,left_zero,,,,738
+MAP_737,,"If  ROL_PERSON_SEQUENCE = 2 and  ROL_PERSON_CODE = O
+
+Move ROL_BIRTH_DATE",BIRTH-DA,date_split_day,2,NUMERIC,0,N,N,left_zero,,,,739
+MAP_738,,"If ROL_PERSON_SEQUENCE = 2 and  ROL_PERSON_CODE = O 
+and ROL_PERSON_TYPE = C or T 
+Move 'E'.
+OR
+If ROL_PERSON_SEQUENCE = 2 and ROL_PERSON_CODE = O 
+and ROL_PERSON_TYPE = I 
+Move ROL_SEX",SEX-CODE,conditional_derived,1,CHAR,0,N,N,right_space,,,,740
+MAP_739,,,HANDLING-CODE,conditional_derived,1,CHAR,0,N,N,right_space,,,,741
+MAP_740,,,SPECIAL-CONDITION-1,conditional_derived,1,CHAR,0,N,N,right_space,,,,742
+MAP_741,,,SPECIAL-CONDITION-2,conditional_derived,1,CHAR,0,N,N,right_space,,,,743
+MAP_742,,,CITIZENSHIP-STATUS,conditional_derived,1,CHAR,0,N,N,right_space,,,,744
+MAP_743,,,CITIZENSHIP-COUNTRY,conditional_derived,2,CHAR,0,N,N,right_space,,,,745
+MAP_744,,"If ROL_PERSON_SEQUENCE = 2 and  ROL_PERSON_CODE = O, 
+MOVE ROL_CLIENT_ID",COWNER-DIRECTORY-ID,conditional_derived,15,CHAR,0,N,N,right_space,,,,746
+MAP_745,,,FILLER,conditional_derived,480,CHAR,0,N,N,right_space,,,,747

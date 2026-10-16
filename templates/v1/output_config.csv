@@ -1,0 +1,3 @@
+output_id,adapter_type,delivery_mechanism,delivery_target,include_severity,description
+EA_FLAT_FILE,positional_flat_file,local_filesystem,output/ea_transaction.txt,CLEAN|WARNING,EA Transaction positional flat file for End-state Administration system
+EA_CSV_VALIDATION,csv_file,local_filesystem,output/ea_transaction_validation.csv,CLEAN|WARNING,CSV output for BA validation (human-readable with headers)
